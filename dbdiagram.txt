@@ -1,0 +1,75 @@
+table campionato{
+   idcampionato integer
+   anno integer
+   numeroGare integer
+   numeroScuderie integer
+}
+
+table campionatogare
+{
+  idgara integer
+  idcampionato integer
+}
+
+table Gara{
+  idGara integer
+  idcampionato integer
+  nome varchar
+  data datetime
+  stato bool
+  sponsor integer
+  nazione varchar
+  lunghezzaTracciato decimal
+  numeroGiri integer
+}
+
+table garapiloti {
+ idPilota integer
+ idGara integer
+ piazzamento integer
+  giroPiuVeloce decimal
+}
+
+table Sponsor{
+  idSponsor integer
+  nome varchar
+  valore decimal
+  dataInizioSponsorizzazione datetime
+}
+
+
+table Scuderia{
+  idScuderia integer
+  nome varchar
+  idPilota integer
+  //campionatiCostruttoriVinti integer
+ // campionatiPilotiVinti integer
+ // numeroVittorie integer
+ // numeroPole integer
+}
+
+table Pilota{
+  idPilota integer
+  nome varchar
+    cognomenome varchar
+  dataDiNascita datetime
+  nazionalita varchar
+//  numeroPole integer
+//  granPremiDisputati integer
+}
+
+
+
+Ref: "Sponsor"."idSponsor" < "Gara"."sponsor"
+
+
+
+Ref: "Scuderia"."idPilota" < "Pilota"."idPilota"
+
+Ref: "Pilota"."idPilota" < "garapiloti"."idPilota"
+
+Ref: "garapiloti"."idGara" < "Gara"."idGara"
+
+Ref: "campionato"."idcampionato" < "campionatogare"."idcampionato"
+
+Ref: "campionatogare"."idgara" < "Gara"."idGara"
