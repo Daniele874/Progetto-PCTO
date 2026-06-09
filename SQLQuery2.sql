@@ -93,14 +93,25 @@ values (1, 'Charles', 'Leclerc', '17/10/1997', 'Monaco'),
 (2, 'Lewis', 'Hamilton', '07/01/1985', 'Gran Bretagna'),
 (3, 'Max', 'Verstappen', '30/11/1997', 'Olanda'),
 (4, 'Andrea Kimi', 'Antonelli', '25/08/2006', 'Italia'),
-(5, 'Lando', 'Norris', '13/11/1999', 'Gran Bretagna')
+(5, 'Lando', 'Norris', '13/11/1999', 'Gran Bretagna'),
+(6, 'Fernando', 'Alonso', '29/07/1981', 'Spagna'),
+(7, 'Carlos', 'Sainz', '01/09/1994', 'Spagna'),
+(8, 'Sergio', 'Perez', '26/01/1990', 'Messico'),
+(9, 'George', 'Russell', '15/02/1998', 'Gran Bretagna'),
+(10, 'Oscar', 'Piastri', '06/04/2001', 'Australia')
+
 
 insert into Scuderia 
 values (1,  'Ferrari', 1),
 (2, 'Ferrari', 2),
 (3, 'RedBull', 3),
 (4 , 'Mercedes', 4),
-(5 , 'McLaren' , 5)
+(5 , 'McLaren' , 5),
+(6, 'Aston Martin', 6),
+(7, 'Williams', 7),
+(8 , 'Cadillac', 8),
+(9 , 'Mercedes' , 9),
+(10 , 'McLaren' , 10)
 
 insert into Sponsor
 values (1, 'DHL', 1.6, '2004'),
@@ -110,22 +121,36 @@ values (1, 'DHL', 1.6, '2004'),
 insert into Campionato
 values (1, '2026', 24, 11),
 (2, '2024', 24, 10),
-(3, '2025', 24, 10)
+(3, '2025', 24, 10),
+(4, '2023', 23, 10),
+(5, '2022', 22, 10)
+
 
 insert into Gara 
 values (1, 2, 'Gran Premio Di Monza', '16/09/2024', 'gia svolta', 20, 'Italia', 5.793, 53),
 (2, 3, 'Gran Premio Di Monaco', '07/06/2025', 'gia svolta', 35, 'Principato di Monaco', 3.337, 78),
 (3, 1, 'Gran Premio Di Montreal', '24/05/2026', 'gia svolta', 15, 'Canada', 4.361, 70),
 (4, 1, 'Gran Premio Di Silverstone', '12/07/2026', 'ancora da svolgere', 18, 'Regno Unito', 5.891, 52),
-(5, 1, 'Gran Premio Di Suzuka', '04/10/2026', 'ancora da svolgere', 22, 'Giappone', 5.807, 53)
+(5, 1, 'Gran Premio Di Suzuka', '04/10/2026', 'ancora da svolgere', 22, 'Giappone', 5.807, 53),
+(6, 4, 'Gran Premio Di Spa-Francorchamps', '30/07/2023', 'gia svolta', 17, 'Belgio', 7.004, 44),
+(7, 4, 'Gran Premio Di Zandvoort', '27/08/2023', 'gia svolta', 19, 'Paesi Bassi', 4.259, 72),
+(8, 5, 'Gran Premio Di Baku', '12/06/2022', 'gia svolta', 14, 'Azerbaigian', 6.003, 51),
+(9, 5, 'Gran Premio Di Imola', '24/04/2022', 'gia svolta', 16, 'Italia', 4.909, 63),
+(10, 3, 'Gran Premio Di Austin', '20/10/2025', 'ancora da svolgere', 21, 'Stati Uniti', 5.513, 56)
+
 
 
 insert into GaraPiloti
-values (1, 1, 3, 1.23),
-(2, 2, 2, 1.13),
-(3, 3, 6, 1.32),
-(4, 1, 1, 1.16),
-(5, 3, 1, 1.38)
+values (1, 2, 1, 1.23),
+(2, 3, 1, 1.13),
+(3, 4, 1, 1.32),
+(4, 2, 1, 1.16),
+(5, 1, 1, 1.38),
+(6, 3, 1, 1.13),
+(7, 3, 1, 1.32),
+(8, 1, 1, 1.16),
+(9, 1, 1, 1.38),
+(10, 1, 1, 1.38)
 
 insert into CampionatoGare
 values (1, 1),
@@ -133,15 +158,7 @@ values (1, 1),
 (3, 3)
 
 
-/*INTERROGAZIONE TABELLA*/
-select Pilota.nome, Pilota.cognome from Pilota inner join Scuderia on Pilota.idPilota = Scuderia.idPilota
-where Scuderia.nome in ('Ferrari')
 
-select Pilota.nome, Pilota.cognome from Pilota inner join GaraPiloti on Pilota.idPilota = GaraPiloti.idPilota 
-where piazzamento = 1
-
-select Gara.nome from Gara inner join Campionato on Gara.idCampionato = Campionato.idCampionato 
-where Campionato.anno like '%2026%' and dataGara like '%2026%'
 
 /*CANCELLAZIONE TABELLA*/
-drop table GaraPiloti, CampionatoGare, Gara, Scuderia, Pilota, Campionato, Sponsor
+--drop table GaraPiloti, CampionatoGare, Gara, Scuderia, Pilota, Campionato, Sponsor
