@@ -1,5 +1,13 @@
 
 /*CREAZIONE TABELLA*/
+
+create table Scuderia(
+  idScuderia int,
+  nome varchar(50),
+  idPilota int references Pilota(idPilota),
+  primary key(idScuderia),
+)
+
 create table Pilota (
 	idPilota int,
 	nome varchar(50),
@@ -7,46 +15,15 @@ create table Pilota (
 	dataDiNascita varchar(50),
 	nazionalita varchar(50),
 	primary key (idPilota),
+	FOREIGN KEY (idPilota) references Scuderia(idPilota) 
 )
 
-create table Scuderia(
-  idScuderia int,
-  nome varchar(50),
-  idPilota int,
-  primary key(idScuderia, idPilota)
-)
 
-create table Gara(
-	idGara int ,
-	idCampionato int,
-	nome varchar(50),
-	dataGara varchar(50),
-	stato varchar(50),
-	numeroSponsor int,
-	nazione varchar(50),
-	lunghezzaTracciato decimal,
-	numeroGiri int,
-	primary key (idGara, idCampionato)
-)
-
-create table GaraPiloti(
-	idGara int,
-	idPilota int,
-	piazzamento int,
-	giroPiuVeloce decimal
-	primary key (idGara, idPilota)
-)
-
-create table CampionatoGare(
-	idGara int,
-	idCampionato int,
-	primary key (idGara, idCampionato)
-)
 
 create table Sponsor(
 	idSponsor int,
 	nome varchar(50),
-	valore decimal,
+	valore float,
 	dataInizioSponsorizzazione varchar(10)
 	primary key (idSponsor)
 )
@@ -56,8 +33,36 @@ create table Campionato(
 	anno varchar(4),
 	numeroGare int,
 	numeroScuderie int,
-	primary key (idCampionato)
+	primary key (idCampionato),
+	foreign key (idCampionato) references Gara(idCampionato)
 )
+create table Gara(
+	idGara int ,
+	idCampionato int references Campionato(idCampionato),
+	nome varchar(50),
+	dataGara varchar(50),
+	stato varchar(50),
+	numeroSponsor int,
+	nazione varchar(50),
+	lunghezzaTracciato float,
+	numeroGiri int,
+	primary key (idGara),
+	foreign key (idGara) references Campionato(idGara)
+)
+
+create table GaraPiloti(
+	idGara int,
+	idPilota int,
+	piazzamento int,
+	giroPiuVeloce float
+)
+
+create table CampionatoGare(
+	idGara int,
+	idCampionato int,
+)
+
+
 /*CREAZIONE PK*/
 -- Creazione PK, chiavi primarie va qui dentro alla creazione tabella o appena dopo
 
@@ -75,7 +80,7 @@ values (1,  'Ferrari', 1)
 insert into Pilota 
 values (1, 'Charles', 'Leclerc', '17/10/1997', 'Monaco'),
 (2, 'Max', 'Verstappen', '30/11/1997', 'Olanda'),
-(3, 'Andrea Kimi', 'Antonelli', '25/08/2006', 'Monaco')
+(3, 'Andrea Kimi', 'Antonelli', '25/08/2006', 'Italia')
 
 insert into Gara 
 values (1, 1, 'Gran Premio Di Monza', '06/09/2026', 'ancora da svolgere', 20, 'Italia', 5.793, 53),
@@ -105,12 +110,12 @@ values (1, '2026', 24, 11),
 
 /*INTERROGAZIONE TABELLA*/
 select * from Pilota 
-select * from Scuderia
-/*select * from Gara
-select * from GaraPiloti
-select * from CampionatoGare
+--select * from Scuderia
+--select * from Gara
+--select * from GaraPiloti
+--select * from CampionatoGare
 select * from Sponsor
-select * from Campionato*/
+--select * from Campionato
 
 /*CANCELLAZIONE TABELLA*/
 DROP TABLE Scuderia, Pilota, Gara, GaraPiloti, CampionatoGare, Sponsor, Campionato
