@@ -4,12 +4,41 @@
 }
 
 
-
+<div class="season">ELENCO PILOTI</div>
 <hr />
 <div class="box db-piloti">
-    <h2>Elenco piloti (DB)</h2>
 
-    <details class="add-pilota">
+    @{
+        var pilotList = (Model ?? Enumerable.Empty<WebApplicationF1.Models.Pilota>()).ToList();
+    }
+
+    @if (pilotList.Any())
+    {
+        @for (int i = 0; i < pilotList.Count; i++)
+        {
+            var p = pilotList[i];
+            <div class="boxDriver @(p.Colore)" id="pilot-@p.IdPilota">
+                @{
+                    System.Diagnostics.Debug.WriteLine($"Rendering pilota: {p.Nome} {p.Cognome}, {p.Colore}");
+                }
+
+                <div class="boxContent">
+                    <h3>@(i + 1)</h3>
+                    <p>@(p.Nome) @(p.Cognome)</p> <br />
+                    <p>@p.Nazionalita</p>
+						<small>@p.DataDiNascita</small>
+                </div>
+                
+                <img src="~/css/Assets/@(p.Cognome).png" alt="@p.Nome" />
+            </div>
+        }
+    }
+    else
+    {
+        <p>Nessun pilota nel database.</p>
+    }
+    <br/>
+    <details class="addPilota">
         <summary>Aggiungi pilota</summary>
         <form asp-action="AddPilota" method="post" class="add-pilota-form">
             <div>
@@ -25,36 +54,13 @@
                 <label>Nazionalità: <input name="Nazionalita" /></label>
             </div>
             <div>
-                    <label>Colore (es: rosso, blu, azzurro, arancione, rosa, bianco): <input name="Colore" /></label>
+                <label>Colore (es: rosso, blu, azzurro, arancione, rosa, bianco): <input name="Colore" /></label>
             </div>
-                <div>
-                    <button type="submit">Aggiungi Pilota</button>
-                </div>
-            </form>
+            <div>
+                <button type="submit">Aggiungi Pilota</button>
+            </div>
+        </form>
     </details>
-
-    @{ 
-        var pilotList = (Model ?? Enumerable.Empty<WebApplicationF1.Models.Pilota>()).ToList();
-    }
-
-    @if (pilotList.Any())
-    {
-        @for (int i = 0; i < pilotList.Count; i++)
-        {
-            var p = pilotList[i];
-            <div class="boxDriver @((p.Colore ?? "").ToString())" id="pilot-@p.IdPilota">
-                <div class="boxContent">
-                    <h3>@(i + 1)</h3>
-                    <p>@(p.Nome) @(p.Cognome)</p> <br />
-                    <p>@p.Nazionalita</p>
-                    <small>@p.DataDiNascita</small>
-                </div>
-                <img src="~/css/Assets/@(p.Cognome).png" alt="@p.Nome" />
-            </div>
-        }
-    }
-    else
-    {
-        <p>Nessun pilota nel database.</p>
-    }
 </div>
+
+

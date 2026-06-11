@@ -1,43 +1,27 @@
-﻿
-
+@model IEnumerable<WebApplicationF1.Models.Scuderia>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1</title>
-    <link rel="stylesheet" href="~/css/site.css">
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Scuderie</title>
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
-    <body>
-    
+<body>
     <div class="box">
-        <div class="boxCar" id="Leclerc">
-            <div class="boxContent">
-                <p>Scuderia Ferrari</p> <br>
-                <h2>Vittorie: 249</h2>
-                <h2>Podi: 644</h2>
+        @foreach (var s in Model)
+        {
+            <div class="boxCar @(s.Nome)" id="@s.Nome?.Replace(" ", "")">
+                <div class="boxContent">
+                    <p>@s.Nome</p><br />
+                    @if (!string.IsNullOrEmpty(s.PilotaNome) || !string.IsNullOrEmpty(s.PilotaCognome))
+                    {
+                        <h3>Pilota: @(($"{s.PilotaNome} {s.PilotaCognome}").Trim())</h3>
+                    }
+                </div>
+                <img src="@Url.Content("~/css/Assets/" + (s.Nome?.Replace(" ", "") ?? "default") + ".png")" alt="@s.Nome" />
             </div>
-            <img src="~/css/Assets/Ferrari.png">
-        </div>
-
-        <div class="boxCar" id="McLaren">
-            <div class="boxContent">
-                <p>McLaren</p> <br>
-                <h2>Vittorie: 203</h2>
-                <h2>Podi: 447</h2>
-            </div>
-            <img src="~/css/Assets/mclaren.png">
-        </div>
-        
-        <div class="boxCar" id="Verstappen">
-            <div class="boxContent">
-                <p>Red Bull</p> <br>
-                <h2>Vittorie: 130</h2>
-                <h2>Podi: 235</h2>
-            </div>
-            <img src="~/css/Assets/redbull.png">
-        </div>
+        }
     </div>
-    </body>
+</body>
 </html>
