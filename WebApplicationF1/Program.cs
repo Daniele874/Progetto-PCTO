@@ -1,7 +1,10 @@
+using WebApplicationF1.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IDatabase, Database>();
+builder.Services.AddScoped<DataRepository>();
 
 var app = builder.Build();
 

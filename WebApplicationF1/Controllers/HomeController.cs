@@ -1,11 +1,19 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationF1.Models;
+using WebApplicationF1.Data;
 
 namespace WebApplicationF1.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly DataRepository _repo;
+
+        public HomeController(DataRepository repo)
+        {
+            _repo = repo;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -16,9 +24,30 @@ namespace WebApplicationF1.Controllers
             return View();
         }
 
-        public IActionResult Piloti()
+        public async Task<IActionResult> Piloti()
         {
-            return View();
+            var pilots = await _repo.GetPilotiAsync();
+            return View(pilots);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddPilota(Pilota pilota)
+        {
+            if (!ModelState.IsValid)
+                return RedirectToAction("Piloti");
+
+            await _repo.AddPilotaAsync(pilota);
+            return RedirectToAction("Piloti");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePilota(Pilota pilota)
+        {
+            if (!ModelState.IsValid)
+                return RedirectToAction("Piloti");
+
+            await _repo.UpdatePilotaAsync(pilota);
+            return RedirectToAction("Piloti");
         }
 
         public IActionResult Scuderie()

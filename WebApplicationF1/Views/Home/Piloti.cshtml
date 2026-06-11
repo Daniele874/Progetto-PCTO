@@ -1,65 +1,102 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@model IEnumerable<WebApplicationF1.Models.Pilota>
+@{
+    ViewData["Title"] = "Piloti";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1</title>
-    <link rel="stylesheet" href="~/css/site.css">
-
-</head>
-    <body>
-    
-    <div class="box">
-        <div class="boxDriver" id="Leclerc">
-            <div class="boxContent">
-                <p>Charles Leclerc</p> <br>
-                <h2>Vittorie: 8</h2>
-                <p>Scuderia Ferrari</p>
-            </div>
-            <img src="~/css/Assets/leclerc.png">
+<div class="box">
+    <div class="boxDriver" id="Leclerc">
+        <div class="boxContent">
+            <p>Charles Leclerc</p> <br>
+            <h2>Vittorie: 8</h2>
+            <p>Scuderia Ferrari</p>
         </div>
-
-		<div class="boxDriver" id="Antonelli">
-			<div class="boxContent">
-				<p>Kimi Antonelli</p> <br>
-                <h2>Vittorie: 5</h2>
-                <p>Mercedes</p>
-			</div>
-			<img src="~/css/Assets/Kimi_Antonelli.png">
-		</div>
-        
-        <div class="boxDriver" id="Verstappen">
-            <div class="boxContent">
-                <p>Max Verstappen</p> <br>
-                <h2>Vittorie: 71</h2>
-                <p>Red Bull</p>
-            </div>
-            <img src="~/css/Assets/verstappen.png">
-        </div>
-
-        <div class="boxDriver" id="Hamilton">
-            <div class="boxContent">
-                <p>Lewis Hamilton</p> <br>
-                <h2>Vittorie: 103</h2>
-                <p>Scuderia Ferrari</p>
-            </div>
-            <img src="~/css/Assets/hamilton.png">
-        </div>
-
-        
-
-        <div class="boxDriver" id="Russel">
-            <div class="boxContent">
-                <p>George Russel</p> <br>
-                <h2>Vittorie: 6</h2>
-                <p>Mercedes</p>
-            </div>
-            <img src="~/css/Assets/russel.png">
-        </div>
+        <img src="~/css/Assets/leclerc.png" />
     </div>
-    </body>
-</html>
+
+    <div class="boxDriver" id="Antonelli">
+        <div class="boxContent">
+            <p>Kimi Antonelli</p> <br>
+            <h2>Vittorie: 5</h2>
+            <p>Mercedes</p>
+        </div>
+        <img src="~/css/Assets/Kimi_Antonelli.png" />
+    </div>
+
+    <div class="boxDriver" id="Verstappen">
+        <div class="boxContent">
+            <p>Max Verstappen</p> <br>
+            <h2>Vittorie: 71</h2>
+            <p>Red Bull</p>
+        </div>
+        <img src="~/css/Assets/verstappen.png" />
+    </div>
+
+    <div class="boxDriver" id="Hamilton">
+        <div class="boxContent">
+            <p>Lewis Hamilton</p> <br>
+            <h2>Vittorie: 103</h2>
+            <p>Scuderia Ferrari</p>
+        </div>
+        <img src="~/css/Assets/hamilton.png" />
+    </div>
+
+    <div class="boxDriver" id="Russel">
+        <div class="boxContent">
+            <p>George Russel</p> <br>
+            <h2>Vittorie: 6</h2>
+            <p>Mercedes</p>
+        </div>
+        <img src="~/css/Assets/russel.png" />
+    </div>
+</div>
+
+<hr />
+<div class="box db-piloti">
+    <h2>Elenco piloti (DB)</h2>
+
+    <details class="add-pilota">
+        <summary>Aggiungi pilota</summary>
+        <form asp-action="AddPilota" method="post" class="add-pilota-form">
+            <div>
+                <label>Nome: <input name="Nome" /></label>
+            </div>
+            <div>
+                <label>Cognome: <input name="Cognome" /></label>
+            </div>
+            <div>
+                <label>Data di nascita: <input name="DataDiNascita" /></label>
+            </div>
+            <div>
+                <label>Nazionalità: <input name="Nazionalita" /></label>
+            </div>
+            <div>
+                <button type="submit">Aggiungi Pilota</button>
+            </div>
+        </form>
+    </details>
+
+    @{ 
+        var pilotList = (Model ?? Enumerable.Empty<WebApplicationF1.Models.Pilota>()).ToList();
+    }
+
+    @if (pilotList.Any())
+    {
+        @for (int i = 0; i < pilotList.Count; i++)
+        {
+            var p = pilotList[i];
+            <div class="boxDriver" id="pilot-@p.IdPilota">
+                <div class="boxContent">
+                    <h3>@(i + 1)</h3>
+                    <p>@(p.Nome) @(p.Cognome)</p> <br />
+                    <p>@p.Nazionalita</p>
+                    <small>@p.DataDiNascita</small>
+                </div>
+                <img src="~/css/Assets/@(p.Cognome).png" alt="@p.Nome" />
+            </div>
+        }
+    }
+    else
+    {
+        <p>Nessun pilota nel database.</p>
+    }
+</div>
