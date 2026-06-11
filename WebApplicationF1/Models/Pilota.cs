@@ -7,5 +7,6 @@ namespace WebApplicationF1.Models
         public string? Cognome { get; set; }
         public string? DataDiNascita { get; set; }
         public string? Nazionalita { get; set; }
+        public string? Colore { get; set; }
     }
 }

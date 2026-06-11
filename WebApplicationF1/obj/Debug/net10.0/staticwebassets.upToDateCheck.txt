@@ -1,11 +1,13 @@
+wwwroot\css\Assets\antonelli.png
 wwwroot\css\Assets\F1_logo.png
 wwwroot\css\Assets\Ferrari.png
 wwwroot\css\Assets\hamilton.png
-wwwroot\css\Assets\Kimi_Antonelli.png
+wwwroot\css\Assets\HamiltonM.png
 wwwroot\css\Assets\leclerc.png
 wwwroot\css\Assets\mclaren.png
+wwwroot\css\Assets\norris.png
 wwwroot\css\Assets\redbull.png
-wwwroot\css\Assets\russel.png
+wwwroot\css\Assets\russell.png
 wwwroot\css\Assets\verstappen.png
 wwwroot\css\site.css
 wwwroot\favicon.ico
@@ -70,7 +72,6 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
-C:\Users\Admin\Desktop\Progetto-PCTO\WebApplicationF1\wwwroot\lib\jquery\LICENSE.txt
 C:\Users\Admin\Desktop\Progetto-PCTO\WebApplicationF1\wwwroot\lib\jquery\dist\jquery.slim.min.map
 C:\Users\Admin\Desktop\Progetto-PCTO\WebApplicationF1\wwwroot\lib\jquery\dist\jquery.slim.min.js
 C:\Users\Admin\Desktop\Progetto-PCTO\WebApplicationF1\wwwroot\lib\jquery\dist\jquery.slim.js
@@ -132,3 +133,4 @@ C:\Users\Admin\Desktop\Progetto-PCTO\WebApplicationF1\wwwroot\lib\bootstrap\dist
 C:\Users\Admin\Desktop\Progetto-PCTO\WebApplicationF1\wwwroot\js\site.js
 C:\Users\Admin\Desktop\Progetto-PCTO\WebApplicationF1\wwwroot\favicon.ico
 C:\Users\Admin\Desktop\Progetto-PCTO\WebApplicationF1\wwwroot\css\site.css
+C:\Users\Admin\Desktop\Progetto-PCTO\WebApplicationF1\wwwroot\lib\jquery\LICENSE.txt

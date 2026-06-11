@@ -3,52 +3,7 @@
     ViewData["Title"] = "Piloti";
 }
 
-<div class="box">
-    <div class="boxDriver" id="Leclerc">
-        <div class="boxContent">
-            <p>Charles Leclerc</p> <br>
-            <h2>Vittorie: 8</h2>
-            <p>Scuderia Ferrari</p>
-        </div>
-        <img src="~/css/Assets/leclerc.png" />
-    </div>
 
-    <div class="boxDriver" id="Antonelli">
-        <div class="boxContent">
-            <p>Kimi Antonelli</p> <br>
-            <h2>Vittorie: 5</h2>
-            <p>Mercedes</p>
-        </div>
-        <img src="~/css/Assets/Kimi_Antonelli.png" />
-    </div>
-
-    <div class="boxDriver" id="Verstappen">
-        <div class="boxContent">
-            <p>Max Verstappen</p> <br>
-            <h2>Vittorie: 71</h2>
-            <p>Red Bull</p>
-        </div>
-        <img src="~/css/Assets/verstappen.png" />
-    </div>
-
-    <div class="boxDriver" id="Hamilton">
-        <div class="boxContent">
-            <p>Lewis Hamilton</p> <br>
-            <h2>Vittorie: 103</h2>
-            <p>Scuderia Ferrari</p>
-        </div>
-        <img src="~/css/Assets/hamilton.png" />
-    </div>
-
-    <div class="boxDriver" id="Russel">
-        <div class="boxContent">
-            <p>George Russel</p> <br>
-            <h2>Vittorie: 6</h2>
-            <p>Mercedes</p>
-        </div>
-        <img src="~/css/Assets/russel.png" />
-    </div>
-</div>
 
 <hr />
 <div class="box db-piloti">
@@ -70,9 +25,12 @@
                 <label>Nazionalità: <input name="Nazionalita" /></label>
             </div>
             <div>
-                <button type="submit">Aggiungi Pilota</button>
+                    <label>Colore (es: rosso, blu, azzurro, arancione, rosa, bianco): <input name="Colore" /></label>
             </div>
-        </form>
+                <div>
+                    <button type="submit">Aggiungi Pilota</button>
+                </div>
+            </form>
     </details>
 
     @{ 
@@ -84,7 +42,7 @@
         @for (int i = 0; i < pilotList.Count; i++)
         {
             var p = pilotList[i];
-            <div class="boxDriver" id="pilot-@p.IdPilota">
+            <div class="boxDriver @((p.Colore ?? "").ToString())" id="pilot-@p.IdPilota">
                 <div class="boxContent">
                     <h3>@(i + 1)</h3>
                     <p>@(p.Nome) @(p.Cognome)</p> <br />

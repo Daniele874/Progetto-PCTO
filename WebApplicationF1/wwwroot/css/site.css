@@ -118,32 +118,32 @@ a:hover {
     border: solid 1px;
 }
 
-#Hamilton {
+.rosso {
     background-color: red;
     background: linear-gradient(to right, red, rgb(82, 0, 0));
 }
 
-#Antonelli {
+.azzurro {
     background-color: rgb(0, 255, 221);
     background: linear-gradient(to right, rgb(0, 255, 221), rgb(0, 97, 92));
 }
 
-#Russel {
-    background-color: rgb(0, 255, 221);
-    background: linear-gradient(to right, rgb(0, 255, 221), rgb(0, 97, 92));
+.bianco {
+    background-color: white;
+    background: linear-gradient(to right, white, rgb(0, 3, 187));
 }
 
-#Leclerc {
-    background-color: red;
-    background: linear-gradient(to right, red, rgb(82, 0, 0));
+.rosa {
+    background-color: rgb(199, 1, 189);
+    background: linear-gradient(to right, rgb(199, 1, 189), rgb(0, 3, 187));
 }
 
-#Verstappen {
+.blu{
     background-color: rgb(0, 36, 197);
     background: linear-gradient(to right, rgb(0, 36, 197), rgb(0, 9, 48))
 }
 
-#McLaren {
+.arancione {
     background-color: rgb(255, 153, 0);
     background: linear-gradient(to right, rgb(255, 153, 0), rgb(73, 44, 0))
 }

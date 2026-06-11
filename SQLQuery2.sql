@@ -1,13 +1,15 @@
 /*CREAZIONE TABELLA*/
 
 create table Pilota (
-	idPilota int,
+	idPilota int--ADD Identity field,
 	nome varchar(50),
 	cognome varchar(50),
 	dataDiNascita varchar(50),
 	nazionalita varchar(50),
+	colore varchar(50)
 	primary key (idPilota)
 )
+
 create table Scuderia(
   idScuderia int,
   nome varchar(50),
@@ -89,16 +91,16 @@ foreign key (idGara) references Gara(idGara)
 
 /*CREAZIONE DATI*/
 insert into Pilota 
-values (1, 'Charles', 'Leclerc', '17/10/1997', 'Monaco'),
-(2, 'Lewis', 'Hamilton', '07/01/1985', 'Regno Unito'),
-(3, 'Max', 'Verstappen', '30/11/1997', 'Olanda'),
-(4, 'Andrea Kimi', 'Antonelli', '25/08/2006', 'Italia'),
-(5, 'Lando', 'Norris', '13/11/1999', 'Regno Unito'),
-(6, 'Isack', 'Hadjar', '28/09/2004', 'Francia'),
-(7, 'Pierre', 'Gasly', '07/02/1996', 'Francia'),
-(8, 'Liam', 'Lawson', '11/02/2002', 'Nuova Zelanda'),
-(9, 'George', 'Russell', '15/02/1998', 'Regno Unito'),
-(10, 'Oscar', 'Piastri', '06/04/2001', 'Australia')
+values (1, 'Charles', 'Leclerc', '17/10/1997', 'Monaco', 'rosso'),
+(2, 'Lewis', 'Hamilton', '07/01/1985', 'Regno Unito', 'rosso'),
+(3, 'Max', 'Verstappen', '30/11/1997', 'Olanda', 'blu'),
+(4, 'Andrea Kimi', 'Antonelli', '25/08/2006', 'Italia', 'azzurro'),
+(5, 'Lando', 'Norris', '13/11/1999', 'Regno Unito', 'arancione'),
+(6, 'Isack', 'Hadjar', '28/09/2004', 'Francia', 'blu'),
+(7, 'Pierre', 'Gasly', '07/02/1996', 'Francia', 'rosa'),
+(8, 'Liam', 'Lawson', '11/02/2002', 'Nuova Zelanda', 'bianco'),
+(9, 'George', 'Russell', '15/02/1998', 'Regno Unito', 'azzurro'),
+(10, 'Oscar', 'Piastri', '06/04/2001', 'Australia', 'arancione')
 
 
 insert into Scuderia 
