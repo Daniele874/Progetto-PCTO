@@ -90,14 +90,14 @@ foreign key (idGara) references Gara(idGara)
 /*CREAZIONE DATI*/
 insert into Pilota 
 values (1, 'Charles', 'Leclerc', '17/10/1997', 'Monaco'),
-(2, 'Lewis', 'Hamilton', '07/01/1985', 'Gran Bretagna'),
+(2, 'Lewis', 'Hamilton', '07/01/1985', 'Regno Unito'),
 (3, 'Max', 'Verstappen', '30/11/1997', 'Olanda'),
 (4, 'Andrea Kimi', 'Antonelli', '25/08/2006', 'Italia'),
-(5, 'Lando', 'Norris', '13/11/1999', 'Gran Bretagna'),
-(6, 'Fernando', 'Alonso', '29/07/1981', 'Spagna'),
-(7, 'Carlos', 'Sainz', '01/09/1994', 'Spagna'),
-(8, 'Sergio', 'Perez', '26/01/1990', 'Messico'),
-(9, 'George', 'Russell', '15/02/1998', 'Gran Bretagna'),
+(5, 'Lando', 'Norris', '13/11/1999', 'Regno Unito'),
+(6, 'Isack', 'Hadjar', '28/09/2004', 'Francia'),
+(7, 'Pierre', 'Gasly', '07/02/1996', 'Francia'),
+(8, 'Liam', 'Lawson', '11/02/2002', 'Nuova Zelanda'),
+(9, 'George', 'Russell', '15/02/1998', 'Regno Unito'),
 (10, 'Oscar', 'Piastri', '06/04/2001', 'Australia')
 
 
@@ -153,9 +153,16 @@ values (1, 2, 1, 1.23),
 (10, 1, 1, 1.38)
 
 insert into CampionatoGare
-values (1, 1),
-(2, 2),
-(3, 3)
+values (1, 2),
+(2, 3),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 4),
+(7, 4),
+(8, 5),
+(9, 5),
+(10, 3)
 
 
 
