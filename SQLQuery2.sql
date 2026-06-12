@@ -30,6 +30,7 @@ create table Campionato(
 	anno varchar(4),
 	numeroGare int,
 	numeroScuderie int,
+	colore varchar(50)
 	primary key (idCampionato)
 )
 
@@ -43,6 +44,7 @@ create table Gara(
 	nazione varchar(50),
 	lunghezzaTracciato float,
 	numeroGiri int,
+	colore varchar(50)
 	primary key (idGara)
 )
 
@@ -100,7 +102,19 @@ values ('Charles', 'Leclerc', '17/10/1997', 'Monaco', 'rosso'),
 ('Pierre', 'Gasly', '07/02/1996', 'Francia', 'rosa'),
 ('Liam', 'Lawson', '11/02/2002', 'Nuova Zelanda', 'bianco'),
 ('George', 'Russell', '15/02/1998', 'Regno Unito', 'azzurro'),
-('Oscar', 'Piastri', '06/04/2001', 'Australia', 'arancione')
+('Oscar', 'Piastri', '06/04/2001', 'Australia', 'arancione'),
+('Carlos', 'Sainz', '01/09/1994', 'Spagna', 'bluazzurro'),
+('Alexander', 'Albon', '23/03/1996', 'Thailandia', 'bluazzurro'),
+('Arvid', 'Lindblad', '08/08/2007', 'Regno Unito', 'bianco'),
+('Fernando', 'Alonso', '29/07/1981', 'Spagna', 'verde'),
+('Lance', 'Stroll', '29/10/1998', 'Canada', 'verde'),
+('Nico', 'Hülkenberg', '19/08/1987', 'Germania', 'grigio'),
+('Gabriel', 'Bortoleto', '14/10/2004', 'Brasile', 'grigio'),
+('Oliver', 'Bearman', '08/05/2005', 'Regno Unito', 'biancorosso'),
+('Esteban', 'Ocon', '17/09/1996', 'Francia', 'blu'),
+('Franco', 'Colapinto', '27/05/2003', 'Argentina', 'rosa'),
+('Valtteri', 'Bottas', '28/08/1989', 'Finlandia', 'nero'),
+('Sergio', 'Pérez', '26/01/1990', 'Messico', 'nero')
 
 
 insert into Scuderia 
@@ -121,24 +135,24 @@ values ('DHL', 1.6, '2004'),
 ('Rolex', 2.3, '2013')
 
 insert into Campionato
-values ('2026', 24, 11),
-('2024', 24, 10),
-('2025', 24, 10),
-('2023', 23, 10),
-('2022', 22, 10)
+values ('2026', 24, 11, 'azzurro'),
+('2025', 24, 10, 'arancione'),
+('2024', 24, 10, 'blu'),
+('2023', 23, 10, 'blu'),
+('2022', 22, 10, 'blu')
 
 
 insert into Gara 
-values (2, 'Gran Premio Di Monza', '16/09/2024', 'gia svolta', 20, 'Italia', 5.793, 53),
-(3, 'Gran Premio Di Monaco', '07/06/2025', 'gia svolta', 35, 'Principato di Monaco', 3.337, 78),
-(1, 'Gran Premio Di Montreal', '24/05/2026', 'gia svolta', 15, 'Canada', 4.361, 70),
-(1, 'Gran Premio Di Silverstone', '12/07/2026', 'ancora da svolgere', 18, 'Regno Unito', 5.891, 52),
-(1, 'Gran Premio Di Suzuka', '04/10/2026', 'ancora da svolgere', 22, 'Giappone', 5.807, 53),
-(4, 'Gran Premio Di Spa-Francorchamps', '30/07/2023', 'gia svolta', 17, 'Belgio', 7.004, 44),
-(4, 'Gran Premio Di Zandvoort', '27/08/2023', 'gia svolta', 19, 'Paesi Bassi', 4.259, 72),
-(5, 'Gran Premio Di Baku', '12/06/2022', 'gia svolta', 14, 'Azerbaigian', 6.003, 51),
-(5, 'Gran Premio Di Imola', '24/04/2022', 'gia svolta', 16, 'Italia', 4.909, 63),
-(3, 'Gran Premio Di Austin', '20/10/2025', 'ancora da svolgere', 21, 'Stati Uniti', 5.513, 56)
+values (2, 'Gran Premio Di Monza', '16/09/2024', 'gia svolta', 20, 'Italia', 5.793, 53, 'rosso'),
+(3, 'Gran Premio Di Monaco', '07/06/2025', 'gia svolta', 35, 'Principato di Monaco', 3.337, 78, 'blu'),
+(1, 'Gran Premio Di Montreal', '24/05/2026', 'gia svolta', 15, 'Canada', 4.361, 70, 'azzurro'),
+(1, 'Gran Premio Di Silverstone', '12/07/2024', 'gia svolta', 18, 'Regno Unito', 5.891, 52, 'rosso'),
+(1, 'Gran Premio Di Suzuka', '04/10/2026', 'gia svolta', 22, 'Giappone', 5.807, 53, 'rosso'),
+(4, 'Gran Premio Di Spa-Francorchamps', '30/07/2023', 'gia svolta', 17, 'Belgio', 7.004, 44, 'blu'),
+(4, 'Gran Premio Di Zandvoort', '27/08/2023', 'gia svolta', 19, 'Paesi Bassi', 4.259, 72, 'blu'),
+(5, 'Gran Premio Di Baku', '12/06/2022', 'gia svolta', 14, 'Azerbaigian', 6.003, 51, 'rosso'),
+(5, 'Gran Premio Di Imola', '24/04/2022', 'gia svolta', 16, 'Italia', 4.909, 63, 'rosso'),
+(3, 'Gran Premio Di Austin', '20/10/2025', 'gia svolta', 21, 'Stati Uniti', 5.513, 56, 'rosso')
 
 
 

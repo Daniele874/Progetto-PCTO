@@ -1,0 +1,86 @@
+@model IEnumerable<WebApplicationF1.Models.GaraWithResults>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Risultato Campionato</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .gara-details { display: none; margin-top: 10px; }
+        
+    </style>
+    <script>
+        function toggleDetails(id) {
+            var el = document.getElementById('details-' + id);
+            if (!el) return;
+            el.style.display = el.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="season">
+        <p>RISULTATI</p>
+    </div>
+    <div class="box">
+        @if (Model == null || !Model.Any())
+        {
+            <p style="color:white; font-family:sans-serif; padding:20px;">Nessuna gara trovata per questo campionato.</p>
+        }
+        else
+        {
+            var idx = 0;
+            foreach (var item in Model)
+            {
+                var g = item.Gara;
+                var raceRaw = (g?.Colore ?? item.CampionatoColore ?? "").Trim();
+                var raceNormalized = new string(raceRaw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
+                <div class="boxRisultatoGara @(raceNormalized)" onclick="location.href='@Url.Action("RisultatoGara","Home", new { id = g.IdGara })'" style="cursor:pointer;">
+                    <div class="boxContent">
+                        <h3>@g.Nome</h3>
+                        <p><strong>Data:</strong> @g.DataGara</p>
+                        <p><strong>Stato:</strong> @g.Stato</p>
+                        <p><strong>Nazione:</strong> @g.Nazione</p>
+                        <p><strong>Lunghezza tracciato (km):</strong> @(g.LunghezzaTracciato?.ToString() ?? "N/A")</p>
+                        <p><strong>Numero giri:</strong> @(g.NumeroGiri?.ToString() ?? "N/A")</p>
+                    </div>
+                </div>
+                <div class="gara-details" id="details-@(idx)">
+                    @if (item.Risultati != null && item.Risultati.Any())
+                    {
+                        var winner = item.Risultati.FirstOrDefault(r => r.Piazzamento == 1) ?? item.Risultati.OrderBy(r=>r.Piazzamento).First();
+                        var winnerRaw = (winner.Colore ?? "").Trim();
+                        var winnerNormalized = new string(winnerRaw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
+                        <div class="boxDriver @(winnerNormalized)" id="pilot-@(winner.IdPilota)">
+                            <div class="boxContent">
+                                <h3>1°</h3>
+                                <p>@winner.Nome @winner.Cognome</p>
+                                <p>@(winner.Nazionalita ?? "")</p>
+                                <small>@(winner.DataDiNascita ?? "")</small>
+                            </div>
+                            <img src="~/css/Assets/@(winner.Cognome).png" alt="@winner.Nome" />
+                        </div>
+                        <h4 style="color:white; margin-top:10px;">Classifica completa</h4>
+                        <table class="boxClassifica" style="width:60%;">
+                            <tr><td>Pos.</td><td>Pilota</td><td>Giro più veloce</td></tr>
+                            @foreach (var r in item.Risultati.OrderBy(r=>r.Piazzamento))
+                            {
+                                <tr>
+                                    <td>@r.Piazzamento</td>
+                                    <td>@r.Nome @r.Cognome</td>
+                                    <td>@(r.GiroPiuVeloce?.ToString() ?? "N/A")</td>
+                                </tr>
+                            }
+                        </table>
+                    }
+                    else
+                    {
+                        <p style="color:white">Nessun risultato disponibile per questa gara.</p>
+                    }
+                </div>
+                idx++;
+            }
+        }
+    </div>
+</body>
+</html>

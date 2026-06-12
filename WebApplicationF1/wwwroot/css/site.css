@@ -21,7 +21,7 @@ body {
     text-decoration: none;
 }
 
-a:hover {
+.navbar > a:hover {
     transform: scale(1.20);
     box-shadow: 2px 2px 4px white;
     border-radius: 10px;
@@ -75,6 +75,9 @@ a:hover {
     border: solid 1px;
 }
 
+.boxDriver > a:hover {
+    transform: scale(1.20);
+}
 
 .boxContent {
     flex: 1;
@@ -92,12 +95,13 @@ a:hover {
 .boxCar {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
     gap: 16px;
     padding: 12px;
     color: #fff;
     border-radius: 10px;
-    width: 33%;
+    width: 35%;
+    height: 300px;
     margin: 2%;
     font-family: sans-serif;
     font-weight: bolder;
@@ -148,32 +152,56 @@ a:hover {
     background: linear-gradient(to right, rgb(255, 153, 0), rgb(73, 44, 0))
 }
 
+.verde {
+    background-color: rgb(0, 82, 0);
+    background: linear-gradient(to right, rgb(0, 82, 0), rgb(0, 22, 0))
+}
+
+.bluazzurro {
+    background-color: rgb(0, 89, 255);
+    background: linear-gradient(to right, rgb(0, 89, 255),rgb(0, 5, 80));
+}
+
+.grigio {
+    background-color: rgb(117, 117, 117);
+    background: linear-gradient(to right, rgb(117, 117, 117),rgb(43, 0, 0));
+}
+
+.biancorosso {
+    background-color: white;
+    background: linear-gradient(to right, white, rgb(153, 0, 0));
+}
+
+.nero {
+    background-color: white;
+    background: linear-gradient(to right, white, black);
+}
 .Ferrari {
     background-color: red;
     background: linear-gradient(to right, red, rgb(82, 0, 0));
 }
 
-.mercedes {
+.Mercedes {
     background-color: rgb(0, 255, 221);
     background: linear-gradient(to right, rgb(0, 255, 221), rgb(0, 97, 92));
 }
 
-.racing bulls {
+.RacingBulls {
     background-color: white;
     background: linear-gradient(to right, white, rgb(0, 39, 167));
 }
 
-.alpine {
+.Alpine {
     background-color: rgb(199, 1, 189);
     background: linear-gradient(to right, rgb(199, 1, 189), rgb(0, 3, 187));
 }
 
-.redbull {
+.RedBull {
     background-color: rgb(0, 16, 247);
     background: linear-gradient(to right, rgb(0, 16, 247), rgb(0, 4, 65));
 }
 
-.mclaren {
+.McLaren {
     background-color: rgb(255, 153, 0);
     background: linear-gradient(to right, rgb(255, 153, 0), rgb(73, 44, 0))
 }
@@ -227,4 +255,77 @@ a:hover {
     box-shadow: 2px 2px 4px white;
     border-color: white;
     border: solid 1px;
+}
+
+.boxRisultato {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    color: #fff;
+    border-radius: 10px;
+    width: 35%;
+    height: auto;
+    margin: 2%;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+    text-shadow: 2px 2px 4px black;
+}
+
+.boxRisultato:hover {
+    box-shadow: 2px 2px 4px white;
+    border-color: white;
+    border: solid 1px;
+}
+
+.boxRisultatoGara {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    color: #fff;
+    border-radius: 10px;
+    width: 35%;
+    height: 450px;
+    margin: 2%;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+    text-shadow: 2px 2px 4px black;
+}
+
+.boxRisultatoGara:hover {
+    box-shadow: 2px 2px 4px white;
+    border-color: white;
+    border: solid 1px;
+}
+
+.boxGara {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    flex: 1 1 200px;
+}
+
+.boxGara > a:hover {
+    transform: scale(1.20);
+    box-shadow: 2px 2px 4px white;
+    border-color: white;
+    border: solid 1px;
+        
+}
+
+.boxGara > a {
+    color: white;
+    font-family: sans-serif;
+    font-size: 25px;
+    margin: 2%;
+    padding: 10px;
+    font-weight: bolder;
+    text-decoration: none;
 }

@@ -1,0 +1,58 @@
+@model WebApplicationF1.Models.GaraWithResults
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Risultato Gara</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .gara-header { color:white; margin:10px 0; }
+ 
+    </style>
+</head>
+<body>
+    <div class="season"><p>RISULTATO GARA</p></div>
+    <div class="boxGara">
+        @if (Model == null || Model.Gara == null)
+        {
+            <p style="color:white;">Gara non trovata.</p>
+        }
+        else
+        {
+            var g = Model.Gara;
+            <h2 class="gara-header">@g.Nome</h2>
+            var winner = Model.Risultati?.FirstOrDefault(r => r.Piazzamento == 1);
+            var winnerColorRaw = (winner?.Colore ?? Model.CampionatoColore ?? "").Trim();
+            var winnerColor = new string(winnerColorRaw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
+            if (winner != null)
+            {
+                <div class="boxDriver @(winnerColor)" style="">
+                    <img src="~/css/Assets/@(winner.Cognome).png" alt="@winner.Nome" />
+                    <div>
+                        <h3>@winner.Nome @winner.Cognome</h3>
+                        <p>@(winner.Nazionalita ?? "")</p>
+                        <p>Data di nascita: @(winner.DataDiNascita ?? "")</p>
+                    </div>
+                </div>
+            }
+
+            <h4 style="color:white; margin-top:12px;">Statistiche Gara</h4>
+            <table class="boxClassifica">
+                <tr><td>Pos.</td><td>Pilota</td><td>Giro più veloce</td></tr>
+                @foreach(var r in (Model.Risultati ?? Enumerable.Empty<WebApplicationF1.Models.GaraRisultato>()).OrderBy(r=>r.Piazzamento))
+                {
+                    <tr>
+                        <td>@r.Piazzamento</td>
+                        <td>@r.Nome @r.Cognome</td>
+                        <td>@(r.GiroPiuVeloce?.ToString() ?? "N/A")</td>
+                    </tr>
+                }
+            </table>
+
+            
+            <a href="@Url.Action("Risultato","Home", new { id = g.IdCampionato })">&larr; Torna ai risultati del campionato</a>
+        }
+    </div>
+</body>
+</html>

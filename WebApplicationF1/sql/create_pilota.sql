@@ -7,7 +7,8 @@ CREATE TABLE dbo.pilota (
     nome VARCHAR(100) NOT NULL,
     cognome VARCHAR(100) NOT NULL,
     dataDiNascita VARCHAR(50) NULL,
-    nazionalita VARCHAR(100) NULL
+    nazionalita VARCHAR(100) NULL,
+    colore VARCHAR(50) NULL
 );
 
 -- Optional seed data
