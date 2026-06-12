@@ -11,13 +11,12 @@
     <div class="box">
         @foreach (var s in Model)
         {
-            <div class="boxCar @(s.Nome)" id="@s.Nome?.Replace(" ", "")">
+            var raw = (s.Nome ?? "").Trim();
+            var cls = (s.Nome ?? "").Replace(" ", "");
+            <div class="boxCar @(cls)" onclick="location.href='@Url.Action("ScuderiaDetails","Home", new { id = s.IdScuderia })'" style="cursor:pointer;">
                 <div class="boxContent">
                     <p>@s.Nome</p><br />
-                    @if (!string.IsNullOrEmpty(s.PilotaNome) || !string.IsNullOrEmpty(s.PilotaCognome))
-                    {
-                        <h3>Pilota: @(($"{s.PilotaNome} {s.PilotaCognome}").Trim())</h3>
-                    }
+                    @* Piloti non mostrati qui, vengono visualizzati nella pagina della scuderia *@
                 </div>
                 <img src="@Url.Content("~/css/Assets/" + (s.Nome?.Replace(" ", "") ?? "default") + ".png")" alt="@s.Nome" />
             </div>

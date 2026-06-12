@@ -13,5 +13,4 @@ where Campionato.anno like '%2026%' and dataGara like '%2026%'
 
 
 
-
-select *  from [dbo].[Pilota]
+select *  from [dbo].[Sponsor]

@@ -1,0 +1,41 @@
+@model WebApplicationF1.Models.Sponsor
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Sponsor</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="season"><p>SPONSOR</p></div>
+    <div class="boxGara">
+        @if (Model == null)
+        {
+            <p style="color:white;">Sponsor non trovato.</p>
+        }
+        else
+        {
+            <div style="width:30%; display:flex; align-items:center; justify-content:center;">
+                <img src="~/css/Assets/@(Model.Nome).png" alt="@Model.Nome" style="max-width:220px; max-height:220px; object-fit:contain; border-radius:8px;" />
+            </div>
+      
+            <div style="width:65%;">
+                <div class="boxContent">
+                    <table class="boxClassifica" style="width:100%; margin:30px;">
+                        <tr><td>Campo</td><td>Valore</td></tr>
+                        <tr><td>Valore sponsorizzazione</td><td>@(Model.Valore?.ToString() ?? "N/A")</td></tr>
+                        <tr><td>Inizio sponsorizzazione</td><td>@(Model.DataInizioSponsorizzazione ?? "N/A")</td></tr>
+                        <tr><td>ID Sponsor</td><td>@Model.IdSponsor</td></tr>
+                    </table>
+                    
+                </div>
+            </div>
+            <div class="boxRisultato" style="margin-top:30px; display:flex; justify-content: center">
+                <a href="@Url.Action("Index", "Home")" style="color:white; text-decoration:none;">&larr; Torna alla home</a>
+            </div>
+            
+        }
+    </div>
+</body>
+</html>

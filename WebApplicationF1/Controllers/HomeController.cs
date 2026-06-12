@@ -75,6 +75,38 @@ namespace WebApplicationF1.Controllers
             }
         }
 
+        public async Task<IActionResult> ScuderiaDetails(int id)
+        {
+            try
+            {
+                var scuderie = await _repo.GetScuderieAsync();
+                var sc = scuderie.FirstOrDefault(s => s.IdScuderia == id);
+                if (sc == null) return Content("Scuderia non trovata.");
+                return View(sc);
+            }
+            catch (System.Exception ex)
+            {
+                try { System.IO.File.WriteAllText(System.IO.Path.Combine(System.AppContext.BaseDirectory, "scuderia_details_error.txt"), ex.ToString()); } catch { }
+                return Content("Errore interno: controlla scuderia_details_error.txt nella cartella dell'app");
+            }
+        }
+
+        public async Task<IActionResult> Sponsor(string name)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(name)) return Content("Sponsor non specificato.");
+                var sponsor = await _repo.GetSponsorByNameAsync(name);
+                if (sponsor == null) return Content("Sponsor non trovato nel database.");
+                return View(sponsor);
+            }
+            catch (System.Exception ex)
+            {
+                try { System.IO.File.WriteAllText(System.IO.Path.Combine(System.AppContext.BaseDirectory, "sponsor_error.txt"), ex.ToString()); } catch { }
+                return Content("Errore interno: controlla sponsor_error.txt nella cartella dell'app");
+            }
+        }
+
         public async Task<IActionResult> Campionati()
         {
             try

@@ -62,6 +62,7 @@ body {
     color: #fff;
     border-radius: 10px;
     width: 28%;
+    height: 400px;
     margin: 2%;
     font-family: sans-serif;
     font-weight: bolder;
@@ -122,6 +123,8 @@ body {
     border: solid 1px;
 }
 
+/*Piloti*/
+
 .rosso {
     background-color: red;
     background: linear-gradient(to right, red, rgb(82, 0, 0));
@@ -176,9 +179,12 @@ body {
     background-color: white;
     background: linear-gradient(to right, white, black);
 }
+
+/*Scuderie*/
+
 .Ferrari {
     background-color: red;
-    background: linear-gradient(to right, red, rgb(82, 0, 0));
+    background: linear-gradient(to right, red, rgb(82, 0, 0));  
 }
 
 .Mercedes {
@@ -206,6 +212,32 @@ body {
     background: linear-gradient(to right, rgb(255, 153, 0), rgb(73, 44, 0))
 }
 
+.Audi {
+    background-color: rgb(117, 117, 117);
+    background: linear-gradient(to right, rgb(117, 117, 117),rgb(43, 0, 0));
+}
+
+.Williams {
+    background-color: rgb(0, 89, 255);
+    background: linear-gradient(to right, rgb(0, 89, 255),rgb(0, 5, 80));
+}
+
+.Cadillac {
+    background-color: white;
+    background: linear-gradient(to right, white, black);
+}
+
+.Haas {
+    background-color: white;
+    background: linear-gradient(to right, white, rgb(153, 0, 0));
+}
+
+.AstonMartin {
+    background-color: rgb(0, 82, 0);
+    background: linear-gradient(to right, rgb(0, 82, 0), rgb(0, 22, 0))
+}
+
+
 .boxClassifica {
     border-radius: 50px;
     border-collapse: collapse;
@@ -228,9 +260,31 @@ body {
 }
 
 .site-footer {
-    background: #222;
+    background: rgb(58, 58, 58);
     color: #fff;
     padding: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.site-footer > a {
+    margin: 20px;
+    width: 9%;
+    height: auto;
+}
+
+.site-footer img {
+    width: 100%;
+    height: auto;
+}
+
+.site-footer a:hover img {
+    filter: none;
+    transform: scale(1.20);
+    opacity: 1;
 }
 
 
@@ -278,6 +332,7 @@ body {
     box-shadow: 2px 2px 4px white;
     border-color: white;
     border: solid 1px;
+    text-decoration: none;
 }
 
 .boxRisultatoGara {
@@ -301,6 +356,7 @@ body {
     box-shadow: 2px 2px 4px white;
     border-color: white;
     border: solid 1px;
+    text-decoration: none;
 }
 
 .boxGara {

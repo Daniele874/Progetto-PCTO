@@ -45,11 +45,39 @@ namespace WebApplicationF1.Data
         {
             try
             {
-                return await _db.QueryAsync<Scuderia>("SELECT s.idScuderia AS IdScuderia, s.nome AS Nome, p.idPilota AS IdPilota, p.nome AS PilotaNome, p.cognome AS PilotaCognome FROM dbo.Scuderia s LEFT JOIN dbo.Pilota p ON s.idPilota = p.idPilota");
+                var sql = @"SELECT s.idScuderia AS IdScuderia,
+                                   s.nome AS Nome,
+                                   s.idPilota1 AS IdPilota1,
+                                   s.idPilota2 AS IdPilota2,
+                                   p1.nome AS Pilota1Nome,
+                                   p1.cognome AS Pilota1Cognome,
+                                   p1.colore AS Pilota1Colore,
+                                   p2.nome AS Pilota2Nome,
+                                   p2.cognome AS Pilota2Cognome,
+                                   p2.colore AS Pilota2Colore
+                            FROM dbo.Scuderia s
+                            LEFT JOIN dbo.Pilota p1 ON s.idPilota1 = p1.idPilota
+                            LEFT JOIN dbo.Pilota p2 ON s.idPilota2 = p2.idPilota";
+
+                return await _db.QueryAsync<Scuderia>(sql);
             }
             catch (Microsoft.Data.SqlClient.SqlException)
             {
                 return new List<Scuderia>();
+            }
+        }
+
+        public async Task<Sponsor?> GetSponsorByNameAsync(string name)
+        {
+            try
+            {
+                var sql = @"SELECT idSponsor AS IdSponsor, nome AS Nome, valore AS Valore, dataInizioSponsorizzazione AS DataInizioSponsorizzazione FROM dbo.Sponsor WHERE LOWER(nome) = LOWER(@Name)";
+                var res = (await _db.QueryAsync<Sponsor>(sql, new { Name = name })).FirstOrDefault();
+                return res;
+            }
+            catch (Microsoft.Data.SqlClient.SqlException)
+            {
+                return null;
             }
         }
 

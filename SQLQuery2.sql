@@ -13,7 +13,8 @@ create table Pilota (
 create table Scuderia(
   idScuderia int IDENTITY(1,1),
   nome varchar(50),
-  idPilota int,
+  idPilota1 int,
+  idPilota2 int,
   primary key(idScuderia)
 )
 
@@ -60,7 +61,15 @@ create table CampionatoGare(
 	idCampionato int
 )
 
-
+create table StoricoPilota(
+	idPilota int,
+	podi int,
+	vittorie int,
+	gpFatti int, 
+	polePosition int,
+	punti int,
+	campioneDelMondo int
+)
 /*CREAZIONE PK*/
 -- Creazione PK, chiavi primarie va qui dentro alla creazione tabella o appena dopo
 
@@ -68,71 +77,89 @@ create table CampionatoGare(
 /*CREAZIONE FK (le linee di dbdiagram)*/
 -- dopo
 alter table Scuderia 
-add constraint fk_scuderia_pilota
-foreign key (idPilota) references Pilota(idPilota)
+add constraint fk_scuderia_pilota1
+foreign key (idPilota1) references Pilota(idPilota);
+
+alter table Scuderia 
+add constraint fk_scuderia_pilota2
+foreign key (idPilota2) references Pilota(idPilota);
 
 alter table Gara
 add constraint fk_gara_campionato
-foreign key (idCampionato) references Campionato(idCampionato)
+foreign key (idCampionato) references Campionato(idCampionato);
 
 alter table GaraPiloti
 add constraint fk_gara_piloti
-foreign key (idGara) references Gara(idGara)
+foreign key (idGara) references Gara(idGara);
 
 alter table GaraPiloti
 add constraint fk_piloti_gara
-foreign key (idPilota) references Pilota(idPilota)
+foreign key (idPilota) references Pilota(idPilota);
 
 alter table CampionatoGare
 add constraint fk_campionato_gare
-foreign key (idCampionato) references Campionato(idCampionato)
+foreign key (idCampionato) references Campionato(idCampionato);
 
 alter table CampionatoGare
 add constraint fk_gare_campionato
-foreign key (idGara) references Gara(idGara)
+foreign key (idGara) references Gara(idGara);
+
+alter table StoricoPilota
+add constraint fk_storico_pilota
+foreign key (idPilota) references Pilota(idPilota);
 
 /*CREAZIONE DATI*/
 insert into Pilota 
 values ('Charles', 'Leclerc', '17/10/1997', 'Monaco', 'rosso'),
 ('Lewis', 'Hamilton', '07/01/1985', 'Regno Unito', 'rosso'),
 ('Max', 'Verstappen', '30/11/1997', 'Olanda', 'blu'),
-('Andrea Kimi', 'Antonelli', '25/08/2006', 'Italia', 'azzurro'),
-('Lando', 'Norris', '13/11/1999', 'Regno Unito', 'arancione'),
 ('Isack', 'Hadjar', '28/09/2004', 'Francia', 'blu'),
-('Pierre', 'Gasly', '07/02/1996', 'Francia', 'rosa'),
-('Liam', 'Lawson', '11/02/2002', 'Nuova Zelanda', 'bianco'),
-('George', 'Russell', '15/02/1998', 'Regno Unito', 'azzurro'),
+('Lando', 'Norris', '13/11/1999', 'Regno Unito', 'arancione'),
 ('Oscar', 'Piastri', '06/04/2001', 'Australia', 'arancione'),
+('George', 'Russell', '15/02/1998', 'Regno Unito', 'azzurro'),
+('Andrea Kimi', 'Antonelli', '25/08/2006', 'Italia', 'azzurro'),
 ('Carlos', 'Sainz', '01/09/1994', 'Spagna', 'bluazzurro'),
 ('Alexander', 'Albon', '23/03/1996', 'Thailandia', 'bluazzurro'),
+('Liam', 'Lawson', '11/02/2002', 'Nuova Zelanda', 'bianco'),
 ('Arvid', 'Lindblad', '08/08/2007', 'Regno Unito', 'bianco'),
 ('Fernando', 'Alonso', '29/07/1981', 'Spagna', 'verde'),
 ('Lance', 'Stroll', '29/10/1998', 'Canada', 'verde'),
 ('Nico', 'Hülkenberg', '19/08/1987', 'Germania', 'grigio'),
 ('Gabriel', 'Bortoleto', '14/10/2004', 'Brasile', 'grigio'),
 ('Oliver', 'Bearman', '08/05/2005', 'Regno Unito', 'biancorosso'),
-('Esteban', 'Ocon', '17/09/1996', 'Francia', 'blu'),
+('Esteban', 'Ocon', '17/09/1996', 'Francia', 'biancorosso'),
+('Pierre', 'Gasly', '07/02/1996', 'Francia', 'rosa'),
 ('Franco', 'Colapinto', '27/05/2003', 'Argentina', 'rosa'),
 ('Valtteri', 'Bottas', '28/08/1989', 'Finlandia', 'nero'),
 ('Sergio', 'Pérez', '26/01/1990', 'Messico', 'nero')
 
+insert into StoricoPilota
+values --(podi, vittorie, giriVeloci, polePosition, punti, campioneDelMondo)
+(52, 8, 177, 27, 1747, 0)
 
 insert into Scuderia 
-values ('Ferrari', 1),
-('Ferrari', 2),
-('RedBull', 3),
-('Mercedes', 4),
-('McLaren' , 5),
-('RacingBulls', 6),
-('Alpine', 7),
-('RacingBulls', 8),
-('Mercedes' , 9),
-('McLaren' , 10)
+values ('Ferrari', 1, 2),
+('RedBull', 3, 4),
+('McLaren' , 5,6),
+('Mercedes', 7,8),
+('Williams', 9,10),
+('RacingBulls', 11,12),
+('AstonMartin', 13,14),
+('Audi', 15,16),
+('Haas', 17,18),
+('Alpine', 19, 20),
+('Cadillac', 21, 22)
 
 insert into Sponsor
 values ('DHL', 1.6, '2004'),
 ('Pirelli', 2.1, '2011'),
-('Rolex', 2.3, '2013')
+('Aramco', 2.3, '2020'),
+('aws', 2.0, '2018'),
+('Heineken', 3.0, '2016'),
+('Petronas', 2.8, '2010'),
+('QatarAirways', 2.5, '2023'),
+('Lenovo', 1.9, '2022'),
+('Crypto.com', 2.0, '2021')
 
 insert into Campionato
 values ('2026', 24, 11, 'azzurro'),
@@ -159,7 +186,7 @@ values (2, 'Gran Premio Di Monza', '16/09/2024', 'gia svolta', 20, 'Italia', 5.7
 insert into GaraPiloti
 values (1, 2, 1, 1.23),
 (2, 3, 1, 1.13),
-(3, 4, 1, 1.32),
+(3, 8, 1, 1.32),
 (4, 2, 1, 1.16),
 (5, 1, 1, 1.38),
 (6, 3, 1, 1.13),
