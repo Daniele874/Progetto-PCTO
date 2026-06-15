@@ -1,7 +1,8 @@
-using WebApplicationF1.Models;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
+using WebApplicationF1.Models;
 
 namespace WebApplicationF1.Data
 {
@@ -64,6 +65,27 @@ namespace WebApplicationF1.Data
             catch (Microsoft.Data.SqlClient.SqlException)
             {
                 return new List<Scuderia>();
+            }
+        }
+
+        public async Task<IEnumerable<StoricoScuderia>> GetStoricoScuderieAsync()
+        {
+            try
+            {
+                var sql = @"SELECT idScuderia AS IdScuderia, 
+                                   gpFatti AS GpFatti, 
+                                   punti AS Punti, 
+                                   podi AS Podi, 
+                                   vittorie AS Vittorie, 
+                                   polePosition AS PolePosition, 
+                                   campioniDelMondo AS CampioniDelMondo 
+                            FROM dbo.StoricoScuderia";
+
+                return await _db.QueryAsync<StoricoScuderia>(sql);
+            }
+            catch (Microsoft.Data.SqlClient.SqlException)
+            {
+                return new List<StoricoScuderia>();
             }
         }
 
@@ -158,6 +180,20 @@ namespace WebApplicationF1.Data
         }
 
         // Get single gara with its risultati
+        public async Task<IEnumerable<StoricoPilota>> GetStoricoByPilotaAsync(int idPilota)
+        {
+            try
+            {
+                var sql = @"SELECT idPilota AS IdPilota,podi AS Podi, vittorie AS Vittorie, gpFatti AS GpFatti, polePosition AS PolePosition, punti AS Punti, campioneDelMondo AS CampioneDelMondo FROM dbo.StoricoPilota WHERE idPilota = @IdPilota";
+                return await _db.QueryAsync<StoricoPilota>(sql, new { IdPilota = idPilota });
+            }
+            catch (Microsoft.Data.SqlClient.SqlException)
+            {
+                return new List<StoricoPilota>();
+            }
+        }
+
+        // Get single gara with its risultati
         public async Task<GaraWithResults> GetGaraConRisultatiAsync(int idGara)
         {
             try
@@ -177,4 +213,6 @@ namespace WebApplicationF1.Data
             }
         }
     }
-}
+
+    
+    }

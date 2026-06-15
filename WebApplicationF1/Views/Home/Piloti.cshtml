@@ -17,11 +17,10 @@
         @for (int i = 0; i < pilotList.Count; i++)
         {
             var p = pilotList[i];
-            <div class="boxDriver @(p.Colore)" id="pilot-@p.IdPilota">
+            <a asp-action="StoricoPilota" asp-route-id="@p.IdPilota" class="boxDriver @(p.Colore)" id="pilot-@p.IdPilota">
                 @{
                     System.Diagnostics.Debug.WriteLine($"Rendering pilota: {p.Nome} {p.Cognome}, {p.Colore}");
                 }
-
                 <div class="boxContent">
                     <h3>@(i + 1)</h3>
                     <p>@(p.Nome) @(p.Cognome)</p> <br />
@@ -30,7 +29,7 @@
                 </div>
                 
                 <img src="~/css/Assets/@(p.Cognome).png" alt="@p.Nome" />
-            </div>
+            </a>
         }
     }
     else

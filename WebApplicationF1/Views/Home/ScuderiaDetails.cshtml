@@ -1,4 +1,5 @@
-@model WebApplicationF1.Models.Scuderia
+@model WebApplicationF1.Models.ScuderiaDettagliViewModel
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -7,11 +8,17 @@
     <title>Scuderia</title>
     <link rel="stylesheet" href="~/css/site.css" />
     <style>
-        .team-header { color:white; margin:10px 0; }
+            .team-header {
+                color: white;
+                margin: 10px 0;
+            }
     </style>
 </head>
 <body>
-    <div class="season"><p>@Model.Nome</p></div>
+    <div class="season">
+        <p>@Model.NomeScuderia</p>
+    </div>
+    
     <div class="box">
         @if (Model == null)
         {
@@ -19,36 +26,61 @@
         }
         else
         {
-            var teamRaw = (Model.Nome ?? "").Trim();
-            var teamCls = (Model.Nome ?? "").Replace(" ", "");
+            var teamCls = (Model.NomeScuderia ?? "").Replace(" ", "");
 
-
-                @if (Model.IdPilota1 != null)
-                {
-                    var p1Raw = (Model.Pilota1Colore ?? teamCls ?? "").Trim();
-                    var p1Cls = new string(p1Raw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
-                    <div class="boxDriver @(p1Cls)" id="pilot-@Model.IdPilota1">
-                        <div class="boxContent">
-                            <h3>@(($"{Model.Pilota1Nome} {Model.Pilota1Cognome}").Trim())</h3>
-                        </div>
-                        <img src="~/css/Assets/@(Model.Pilota1Cognome).png" alt="@(Model.Pilota1Nome)" />
+            @if (Model.Pilota1 != null)
+            {
+                var p1Raw = (Model.Pilota1.Colore ?? teamCls ?? "").Trim();
+                var p1Cls = new string(p1Raw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
+                
+                <div class="boxDriver @(p1Cls)" id="pilot-@Model.Pilota1.IdPilota">
+                    <div class="boxContent">
+                        <h3>@(($"{Model.Pilota1.Nome} {Model.Pilota1.Cognome}").Trim())</h3>
                     </div>
-                }
+                    <img src="~/css/Assets/@(Model.Pilota1.Cognome).png" alt="@(Model.Pilota1.Nome)" />
+                </div>
+            }
 
-                @if (Model.IdPilota2 != null)
-                {
-                    var p2Raw = (Model.Pilota2Colore ?? teamCls ?? "").Trim();
-                    var p2Cls = new string(p2Raw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
-                    <div class="boxDriver @(p2Cls)" id="pilot-@Model.IdPilota2">
-                        <div class="boxContent">
-                            <h3>@(($"{Model.Pilota2Nome} {Model.Pilota2Cognome}").Trim())</h3>
-                        </div>
-                        <img src="~/css/Assets/@(Model.Pilota2Cognome).png" alt="@(Model.Pilota2Nome)" />
+            @if (Model.Pilota2 != null)
+            {
+                var p2Raw = (Model.Pilota2.Colore ?? teamCls ?? "").Trim();
+                var p2Cls = new string(p2Raw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
+                
+                <div class="boxDriver @(p2Cls)" id="pilot-@Model.Pilota2.IdPilota">
+                    <div class="boxContent">
+                        <h3>@(($"{Model.Pilota2.Nome} {Model.Pilota2.Cognome}").Trim())</h3>
                     </div>
-                }
-
-            
+                    <img src="~/css/Assets/@(Model.Pilota2.Cognome).png" alt="@(Model.Pilota2.Nome)" />
+                </div>
+            }
         }
+        
+            <table class="boxClassifica">
+                <tr>
+                    <td>Gran Premi Disputati:</td>
+                    <td>@Model.GpFatti</td>
+                </tr>
+                <tr>
+                    <td>Punti Totali:</td>
+                    <td>@Model.Punti</td>
+                </tr>
+                <tr>
+                    <td>Podi:</td>
+                    <td>@Model.Podi</td>
+                </tr>
+                <tr>
+                    <td>Vittorie:</td>
+                    <td>@Model.Vittorie</td>
+                </tr>
+                <tr>
+                    <td>Pole Position:</td>
+                    <td>@Model.PolePosition</td>
+                </tr>
+                <tr>
+                    <td>Titoli Mondiali:</td>
+                    <td><strong>@Model.CampioniDelMondo</strong></td>
+                </tr>
+            </table>
     </div>
 </body>
 </html>

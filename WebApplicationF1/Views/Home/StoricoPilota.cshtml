@@ -1,0 +1,86 @@
+﻿@model WebApplicationF1.Models.PilotaStoricoViewModel
+
+@{
+    ViewData["Title"] = "Storico Pilota";
+    var pil = Model?.Pilota;
+    var storicoList = Model?.Storico ?? Enumerable.Empty<WebApplicationF1.Models.StoricoPilota>();
+}
+
+<div class="season">STORICO PILOTA</div>
+<hr />
+
+@if (pil == null)
+{
+    <p>Pilota non trovato.</p>
+}
+else
+{
+    <div class="box">
+        <a class="boxDriver @(pil.Colore ?? "bianco")" id="pilot-@pil.IdPilota">
+            <div class="boxContent">
+                <p>@pil.Nome @pil.Cognome</p>
+                <br />
+                <p>@pil.Nazionalita</p>
+                <small>@pil.DataDiNascita</small>
+            </div>
+
+            <img src="~/css/Assets/@(pil.Cognome).png" alt="@pil.Nome" onerror="this.src='/css/Assets/placeholder.png';" />
+        </a>
+
+        <br />
+
+
+        @if (!storicoList.Any())
+        {
+            <p>Nessuno storico disponibile per questo pilota.</p>
+        }
+        else
+        {
+            var s = storicoList.FirstOrDefault();
+            if (s == null)
+            {
+                <p>Errore: storico non disponibile.</p>
+            }
+            else
+            {
+                <table class="boxClassifica">
+                    <tbody>
+                        <tr>
+                            <td><strong>Podi</strong></td>
+                            <td>@(s.Podi ?? 0)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vittorie</strong></td>
+                            <td>@(s.Vittorie ?? 0)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gran Premi Disputati</strong></td>
+                            <td>@(s.GpFatti ?? 0)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pole Position</strong></td>
+                            <td>@(s.PolePosition ?? 0)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Punti</strong></td>
+                            <td>@(s.Punti != null ? s.Punti.Value.ToString("0.##") : "0")</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Campione del Mondo</strong></td>
+                            <td>
+                                @if ((s.CampioneDelMondo ?? 0) > 0)
+                                {
+                                    <span class="champion-yes">Sì, @s.CampioneDelMondo volte</span>
+                                }
+                                else
+                                {
+                                    <span class="champion-no">No</span>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+        }
+    </div>
+}

@@ -68,18 +68,16 @@ body {
     font-weight: bolder;
     font-size: 30px;
     text-shadow: 2px 2px 4px black;
+    text-decoration: none;
 }
 
 .boxDriver:hover {
     box-shadow: 2px 2px 4px white;
     border-color: white;
     border: solid 1px;
+    transform: scale(1.05);
 }
-
-.boxDriver > a:hover {
-    transform: scale(1.20);
-}
-
+ 
 .boxContent {
     flex: 1;
     text-align: left
@@ -243,7 +241,8 @@ body {
     border-collapse: collapse;
     width: 87%;
     background-color: black;
-    padding: 5px;
+    padding: 10px;
+    text-align: center;
 }
 
 .boxClassifica td {

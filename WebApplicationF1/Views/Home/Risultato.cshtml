@@ -37,12 +37,12 @@
                 var raceNormalized = new string(raceRaw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
                 <div class="boxRisultatoGara @(raceNormalized)" onclick="location.href='@Url.Action("RisultatoGara","Home", new { id = g.IdGara })'" style="cursor:pointer;">
                     <div class="boxContent">
-                        <h3>@g.Nome</h3>
-                        <p><strong>Data:</strong> @g.DataGara</p>
-                        <p><strong>Stato:</strong> @g.Stato</p>
-                        <p><strong>Nazione:</strong> @g.Nazione</p>
-                        <p><strong>Lunghezza tracciato (km):</strong> @(g.LunghezzaTracciato?.ToString() ?? "N/A")</p>
-                        <p><strong>Numero giri:</strong> @(g.NumeroGiri?.ToString() ?? "N/A")</p>
+                        <h3><strong>@g.Nome</strong></h3>
+                        <p>Data: @g.DataGara</p>
+                        <p>Stato: @g.Stato</p>
+                        <p>Nazione: @g.Nazione</p>
+                        <p>Lunghezza tracciato (km): @(g.LunghezzaTracciato?.ToString() ?? "N/A")</p>
+                        <p>Numero giri: @(g.NumeroGiri?.ToString() ?? "N/A")</p>
                     </div>
                 </div>
                 <div class="gara-details" id="details-@(idx)">

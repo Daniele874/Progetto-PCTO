@@ -39,6 +39,38 @@ namespace WebApplicationF1.Controllers
             }
         }
 
+        public async Task<IActionResult> StoricoPilota(int id)
+        {
+            try
+            {
+                var pilots = await _repo.GetPilotiAsync();
+                var pil = pilots.FirstOrDefault(p => p.IdPilota == id);
+                if (pil == null) return Content("Pilota non trovato.");
+
+                var storicoList = (await _repo.GetStoricoByPilotaAsync(id))?.ToList() ?? new List<StoricoPilota>();
+                System.Diagnostics.Debug.WriteLine($"DEBUG: Storico count for Id {id}: {storicoList.Count}");
+                foreach (var s in storicoList)
+                {
+                    System.Diagnostics.Debug.WriteLine($"DEBUG: Storico -> IdPilota:{s.IdPilota}, Podi:{s.Podi}, Punti:{s.Punti}");
+                }
+
+                var model = new PilotaStoricoViewModel
+                {
+                    Pilota = pil,
+                    Storico = storicoList
+                };
+
+                return View(model);
+            }
+            catch (System.Exception ex)
+            {
+                try { System.IO.File.WriteAllText(System.IO.Path.Combine(System.AppContext.BaseDirectory, "storico_pilota_error.txt"), ex.ToString()); } catch { }
+                return Content("Errore interno: controlla storico_pilota_error.txt nella cartella dell'app");
+            }
+        }
+
+
+
         [HttpPost]
         public async Task<IActionResult> AddPilota(Pilota pilota)
         {
@@ -79,16 +111,49 @@ namespace WebApplicationF1.Controllers
         {
             try
             {
+                // 1. Recupera tutte le scuderie e cerca quella cliccata
                 var scuderie = await _repo.GetScuderieAsync();
                 var sc = scuderie.FirstOrDefault(s => s.IdScuderia == id);
                 if (sc == null) return Content("Scuderia non trovata.");
-                return View(sc);
+                var piloti = await _repo.GetPilotiAsync();
+                var storiciScuderie = await _repo.GetStoricoScuderieAsync(); 
+
+                // 3. Estrai i dati specifici per questa scuderia
+                var pilota1 = piloti.FirstOrDefault(p => p.IdPilota == sc.IdPilota1);
+                var pilota2 = piloti.FirstOrDefault(p => p.IdPilota == sc.IdPilota2);
+                var storico = storiciScuderie.FirstOrDefault(st => st.IdScuderia == id);
+
+                var modelCompleto = new ScuderiaDettagliViewModel
+                {
+                    IdScuderia = sc.IdScuderia,
+                    NomeScuderia = sc.Nome,
+                    Pilota1 = pilota1,
+                    Pilota2 = pilota2,
+                    GpFatti = storico?.GpFatti ?? 0,
+                    Punti = storico?.Punti ?? 0,
+                    Podi = storico?.Podi ?? 0,
+                    Vittorie = storico?.Vittorie ?? 0,
+                    PolePosition = storico?.PolePosition ?? 0,
+                    CampioniDelMondo = storico?.CampioniDelMondo ?? 0
+                };
+
+                return View(modelCompleto);
             }
             catch (System.Exception ex)
             {
                 try { System.IO.File.WriteAllText(System.IO.Path.Combine(System.AppContext.BaseDirectory, "scuderia_details_error.txt"), ex.ToString()); } catch { }
                 return Content("Errore interno: controlla scuderia_details_error.txt nella cartella dell'app");
             }
+        }
+
+        public async Task<IActionResult> StoricoScuderia(int id)
+        {
+            var storici = await _repo.GetStoricoScuderieAsync();
+            var storicoSingolo = storici.FirstOrDefault(st => st.IdScuderia == id);
+
+            if (storicoSingolo == null) return Content("Dati storici non trovati per questa scuderia.");
+
+            return View(storicoSingolo);
         }
 
         public async Task<IActionResult> Sponsor(string name)

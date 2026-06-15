@@ -39,7 +39,7 @@
 
             <h4 style="color:white; margin-top:12px;">Statistiche Gara</h4>
             <table class="boxClassifica">
-                <tr><td>Pos.</td><td>Pilota</td><td>Giro più veloce</td></tr>
+                <tr><td>Pos.</td><td>Pilota</td><td>Giro più veloce (in minuti)</td></tr>
                 @foreach(var r in (Model.Risultati ?? Enumerable.Empty<WebApplicationF1.Models.GaraRisultato>()).OrderBy(r=>r.Piazzamento))
                 {
                     <tr>
