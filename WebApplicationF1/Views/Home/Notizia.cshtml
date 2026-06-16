@@ -1,0 +1,19 @@
+﻿using WebApplicationF1.Models
+@model Notizia
+
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div class="box2">
+            <img src="~/css/Assets/Notizie/@(Model.IdNotizia).png" alt="Alternate Text" />
+            <div class="notizia">
+			    <h1>@Model.Titolo</h1> <br />
+			    <p>@Model.Contenuto</p> <br />
+                <p>Data di pubblicazione: @Model.DataDiPubblicazione</p> <br /><br />
+                <a asp-action="Index" asp-controller="Home">← Torna alla home</a>
+            </div>
+    </div>
+    </body>
+</html>

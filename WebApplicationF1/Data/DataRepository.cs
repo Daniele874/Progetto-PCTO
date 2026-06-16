@@ -30,6 +30,21 @@ namespace WebApplicationF1.Data
             }
         }
 
+        public async Task<List<Notizia>> GetNotiziAsync()
+        {
+            try
+            {
+                var result = await _db.QueryAsync<Notizia>(
+                    "SELECT idNotizia AS IdNotizia, titolo AS Titolo, contenuto AS Contenuto, dataDiPubblicazione AS DataDiPubblicazione FROM dbo.Notizie ORDER BY idNotizia DESC"
+                );
+                return result.ToList();
+            }
+            catch (Microsoft.Data.SqlClient.SqlException)
+            {
+                return new List<Notizia>();
+            }
+        }
+
         public async Task AddPilotaAsync(Pilota pilota)
         {
                     await _db.ExecuteAsync("INSERT INTO dbo.pilota (nome, cognome, dataDiNascita, nazionalita, colore) VALUES (@Nome, @Cognome, @DataDiNascita, @Nazionalita, @Colore)", pilota);

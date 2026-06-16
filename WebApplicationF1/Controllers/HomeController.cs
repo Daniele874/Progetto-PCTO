@@ -15,9 +15,33 @@ namespace WebApplicationF1.Controllers
             _repo = repo;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            try
+            {
+                var notizie = await _repo.GetNotiziAsync();
+                return View(notizie);
+            }
+            catch (System.Exception ex)
+            {
+                try { System.IO.File.WriteAllText(System.IO.Path.Combine(System.AppContext.BaseDirectory, "notizie_error.txt"), ex.ToString()); } catch { }
+                return Content("Errore interno: controlla notizie_error.txt");
+            }
+        }
+        public async Task<IActionResult> Notizia(int id)
+        {
+            try
+            { 
+                var notizie = (await _repo.GetNotiziAsync()).OrderBy(n => n.IdNotizia).ToList();
+                var notizia = notizie.FirstOrDefault(n => n.IdNotizia == id);
+                if (notizia == null) return Content("Notizia non trovata.");
+                return View(notizia);
+            }
+            catch (System.Exception ex)
+            {
+                try { System.IO.File.WriteAllText(System.IO.Path.Combine(System.AppContext.BaseDirectory, "notizia_error.txt"), ex.ToString()); } catch { }
+                return Content("Errore interno: controlla notizia_error.txt");
+            }
         }
 
         public IActionResult Privacy()

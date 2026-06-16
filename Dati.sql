@@ -81,6 +81,14 @@ create table StoricoScuderia(
   campioniDelMondo int
 )
 
+create table Notizie(
+	idNotizia int IDENTITY(1,1),
+	titolo varchar(255),
+	contenuto varchar(5000),
+	dataDiPubblicazione varchar(10),
+	primary key (idNotizia)
+)
+
 /*CREAZIONE PK*/
 -- Creazione PK, chiavi primarie va qui dentro alla creazione tabella o appena dopo
 
@@ -350,5 +358,39 @@ values (1, 1130, 10865, 645, 250, 254, 16),
 (10, 399, 2057, 61, 21, 20, 2),
 (11, 7, 0, 0, 0, 0, 0)
 
+insert into Notizie
+values 
+('Russell apre la stagione a Melbourne',
+'George Russell conquista la vittoria nel Gran Premio d Australia 2026, primo appuntamento del campionato mondiale di Formula 1. Il pilota britannico della Mercedes parte dalla pole position e non lascia mai la testa della corsa, gestendo con freddezza i pit stop e le fasi di Safety Car. Doppietta Mercedes con il compagno di squadra Andrea Kimi Antonelli che chiude secondo dopo una battaglia serrata nel finale. Charles Leclerc porta la Ferrari sul podio in terza posizione, dopo aver guidato la corsa nel primo stint prima di perdere terreno durante il pit stop. Lewis Hamilton, alla sua prima uscita ufficiale in rosso con la Ferrari, termina quarto con una prestazione solida che lascia ben sperare per il futuro. Verstappen chiude quinto con la Red Bull, mentre Norris e Piastri completano la top sette per McLaren. La stagione 2026 si apre quindi con la Mercedes in grande forma, ma con Ferrari e McLaren pronte a lottare.',
+'08/03/2026'),
+
+('Antonelli fa la storia in Cina',
+'Andrea Kimi Antonelli entra nella storia della Formula 1 vincendo il Gran Premio di Cina 2026 sul circuito internazionale di Shanghai. Il diciannovenne bolognese della Mercedes conquista la sua prima vittoria in carriera nel massimo campionato automobilistico con una prestazione di grande maturità e controllo. Antonelli ha dominato la gara dalla partenza, gestendo alla perfezione le gomme e i pit stop su un tracciato tradizionalmente insidioso. Il compagno di squadra George Russell chiude secondo, regalando una splendida doppietta alla Mercedes. Lewis Hamilton sale sul terzo gradino del podio, regalando alla Ferrari il primo podio stagionale e dimostrando di aver già trovato feeling con la monoposto di Maranello. Max Verstappen, partito dalla seconda posizione, paga una strategia non ottimale e chiude quarto. Lando Norris è quinto per McLaren. Il mondiale piloti comincia a prendere forma con Antonelli che scala rapidamente le posizioni in classifica.',
+'15/03/2026'),
+
+('Bis di Antonelli in Giappone a Suzuka',
+'Kimi Antonelli non si ferma e centra la seconda vittoria consecutiva sul leggendario circuito di Suzuka, teatro del Gran Premio del Giappone 2026. Il pilota bolognese della Mercedes diventa così il più giovane pilota della storia a guidare la classifica mondiale di Formula 1 dopo appena tre gare. La sua prestazione a Suzuka è stata semplicemente dominante: partenza perfetta, gestione impeccabile delle gomme e ritmo costantemente superiore agli avversari. Oscar Piastri porta la McLaren al secondo posto con una gara di grande intelligenza tattica, mentre Charles Leclerc conquista il terzo posto per la Ferrari dopo una rimonta straordinaria dalla settima posizione in griglia. George Russell chiude soltanto sesto, penalizzato da un pit stop lento ai box della Mercedes. Lewis Hamilton è fuori dal podio in quarta posizione, ma mostra progressi costanti con la vettura di Maranello. Verstappen è quinto, Norris sesto. Il mondiale si fa già interessante con Antonelli che allunga.',
+'29/03/2026'),
+
+('GP Bahrain e Arabia Saudita cancellati',
+'La Formula 1 è costretta a fare i conti con la realtà geopolitica mondiale: la FIA e Liberty Media annunciano ufficialmente la cancellazione dei Gran Premi del Bahrain e dell Arabia Saudita, previsti rispettivamente per il 13 e il 20 aprile 2026, a causa del grave conflitto militare scoppiato in Medio Oriente nelle settimane precedenti. La sicurezza dei piloti, del personale tecnico e degli spettatori è stata la priorità assoluta nella decisione, presa dopo una serie di consultazioni con i governi locali e le autorità internazionali. Il campionato mondiale di Formula 1 osserva dunque una pausa forzata di circa un mese, con il prossimo appuntamento fissato per il 3 maggio a Miami, negli Stati Uniti. I team hanno sfruttato la pausa per intensificare lo sviluppo delle vetture, con Ferrari e McLaren che promettono importanti aggiornamenti aerodinamici per il Gran Premio di Miami. La cancellazione riduce il calendario 2026 a 22 gare complessive.',
+'25/04/2026'),
+
+('Tripletta Antonelli a Miami, Ferrari delude',
+'Kimi Antonelli è incontenibile e conquista la sua terza vittoria stagionale consecutiva nel Gran Premio di Miami 2026, disputato sull autodromo del Miami International Autodrome. Il pilota della Mercedes conferma di essere il grande protagonista di questa stagione con una prestazione maiuscola: partenza fulminea, strategia perfetta e gestione dei doppiaggi senza sbavature. Lando Norris e Oscar Piastri completano il podio rispettivamente in seconda e terza posizione, regalando alla McLaren un ottimo risultato che consolida il terzo posto nella classifica costruttori. La giornata è invece da dimenticare per la Ferrari: Charles Leclerc, che sembrava avviato verso il podio nelle fasi finali della gara, perde tre posizioni negli ultimi due giri a causa di un problema alla pressione dei pneumatici e chiude amaramente sesto. Lewis Hamilton, mai veramente in lotta per le posizioni di vertice, taglia il traguardo in ottava posizione. Verstappen è quarto con la Red Bull. In classifica piloti Antonelli allunga ulteriormente.',
+'03/05/2026'),
+
+('Poker di vittorie per Antonelli a Montreal',
+'Andrea Kimi Antonelli scrive un altro capitolo della sua stagione straordinaria vincendo il Gran Premio del Canada 2026 sul circuito Gilles Villeneuve di Montreal, conquistando così la quarta vittoria consecutiva in altrettante gare disputate. Una prestazione di grandissima qualità su un tracciato cittadino storicamente imprevedibile, dove i muri sono sempre in agguato e la gestione dei freni è fondamentale. George Russell, che sembrava poter contendere la vittoria al compagno, è costretto al ritiro per un problema meccanico mentre occupava la seconda posizione al trentunesimo giro. Lewis Hamilton approfitta della situazione e conquista un prezioso secondo posto, il miglior risultato stagionale fino ad oggi per il sette volte campione del mondo in Ferrari. Max Verstappen chiude terzo con la Red Bull, dimostrando che la RB21 è tornata competitiva su certi tipi di circuiti. Leclerc è quarto, Norris quinto. In classifica mondiale Antonelli sembra già in fuga.',
+'24/05/2026'),
+
+('Antonelli re di Monaco, Leclerc a muro',
+'Il Gran Premio di Monaco 2026 sarà ricordato come la gara della consacrazione definitiva di Andrea Kimi Antonelli e della grande delusione di Charles Leclerc. Il giovane bolognese della Mercedes trionfa tra le strade del Principato conquistando la sua quinta vittoria consecutiva stagionale, un dominio che non si vedeva in Formula 1 da molti anni. Lewis Hamilton chiude secondo con la Ferrari, confermando il buon momento di forma delle ultime gare. La giornata è però segnata dall incidente di Charles Leclerc, il pilota monegasco che a Monaco non ha mai vinto e che sperava di colmare questa lacuna proprio davanti al pubblico di casa. Leclerc finisce violentemente a muro dopo il restart successivo alla Safety Car uscita per un incidente tra Gasly e Colapinto, e si ritira tra la costernazione dei tifosi presenti sulle tribune. Un momento davvero amaro per il ferrarista che aveva mostrato un ottimo passo gara nel primo stint. Verstappen è terzo, Norris quarto.',
+'07/06/2026'),
+
+('Hamilton vince a Barcellona, Ferrari torna al successo',
+'Lewis Hamilton regala alla Ferrari la prima vittoria della stagione 2026 sul circuito di Barcellona-Catalogna, teatro del Gran Premio di Spagna. Una vittoria liberatoria per il sette volte campione del mondo, che finalmente porta la Rossa sul gradino più alto del podio dopo una serie di risultati altalenanti. Hamilton ha disputato una gara perfetta dalla pole position, mantenendo la testa con autorità e gestendo alla perfezione i pit stop e il traffico dei doppiati. La striscia vincente di Antonelli si interrompe definitivamente: il pilota Mercedes è costretto al ritiro al quarantaduesimo giro per un problema al motore della sua W16, il primo cedimento meccanico stagionale per la casa di Stoccarda. Anche Charles Leclerc, che occupava la terza posizione, si ritira a soli cinque giri dalla fine per un guasto allo sterzo, privando la Ferrari di una potenziale doppietta. George Russell chiude secondo davanti a Lando Norris. In classifica piloti Hamilton accorcia sensibilmente su Antonelli portandosi a soli 41 punti di distanza. Il mondiale si riapre.',
+'14/06/2026')
+
 /*CANCELLAZIONE TABELLA*/
---drop table GaraPiloti, CampionatoGare, Gara, StoricoPilota, StoricoScuderia, Scuderia, Pilota, Campionato, Sponsor
+--drop table GaraPiloti, CampionatoGare, Gara, StoricoPilota, StoricoScuderia, Scuderia, Pilota, Campionato, Sponsor, Notizie

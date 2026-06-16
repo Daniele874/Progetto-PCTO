@@ -91,6 +91,79 @@ body {
     border-radius: 8px
 }
 
+.box2 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.box2 > img {
+    width: 800px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.boxNotizia {
+    text-shadow: 2px 2px 4px black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 90%;
+    height: auto;
+    padding: 20px;
+    margin: 15px;
+    background-color: rgb(58, 58, 58);
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.boxNotizia > img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.boxNotizia:hover {
+    box-shadow: 2px 2px 4px white;
+    border-color: white;
+    border: solid 1px;
+    transform: scale(1.05);
+}
+
+.notizia {
+    padding: 30px; 
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Sans Serif Collection';
+    font-size: 25px;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}
+
+.notizia > a {
+    color: white;
+    font-family: sans-serif;
+    font-size: 25px;
+    margin: 2%;
+    padding: 10px;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.notizia > a:hover {
+    transform: scale(1.20);
+    box-shadow: 2px 2px 4px white;
+    border-radius: 10px;
+    border-color: white;
+    border: solid 1px;
+}
+
 .boxContent > button {
     margin-top: 20px;
     color: white;

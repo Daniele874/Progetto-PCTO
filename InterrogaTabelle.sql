@@ -15,4 +15,4 @@ where Campionato.anno like '%2026%' and dataGara like '%2026%'
 
 select *  from [dbo].[StoricoPilota]
 
-select * from Gara where dataGara like '%2023%'
+select * from Notizie
