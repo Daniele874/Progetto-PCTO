@@ -9,10 +9,10 @@ i risultati di questi ultimi.
 
 # Ambientei di sviluppo
 
-Inizialmente per creare il diagramma delle varie tabelle, ho utilizzato dbDiagram.io, dove sono illustrate le varie classi
+Per creare il diagramma delle varie tabelle, è utilizzato dbDiagram.io, dove sono illustrate le varie classi
 con i propri attributi e i collegamenti con le dipendenze;
-Per creare un DataBase con le varie tabelle e valori, ho utilizzato SQL Management Studio;
-Per la pagina web ho utilizzato Visual Studio con la quale ho collegato il DataBase.
+Per creare il DataBase con le varie tabelle e valori, è utilizzato SQL Management Studio;
+Per la pagina web è utilizzato Visual Studio con la quale ho collegato il DataBase.
 
 # Diagramma
 

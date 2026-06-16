@@ -3,7 +3,6 @@
     ViewData["Title"] = "Piloti";
 }
 
-
 <div class="season">ELENCO PILOTI</div>
 <hr />
 <div class="box db-piloti">
@@ -17,49 +16,75 @@
         @for (int i = 0; i < pilotList.Count; i++)
         {
             var p = pilotList[i];
-            <a asp-action="StoricoPilota" asp-route-id="@p.IdPilota" class="boxDriver @(p.Colore)" id="pilot-@p.IdPilota">
-                @{
-                    System.Diagnostics.Debug.WriteLine($"Rendering pilota: {p.Nome} {p.Cognome}, {p.Colore}");
-                }
+            <div class="boxDriver @(p.Colore)" id="pilot-@p.IdPilota">
+
                 <div class="boxContent">
-                    <h3>@(i + 1)</h3>
-                    <p>@(p.Nome) @(p.Cognome)</p> <br />
-                    <p>@p.Nazionalita</p>
-						<small>@p.DataDiNascita</small>
+                    <a asp-action="StoricoPilota" asp-route-id="@p.IdPilota" style="text-decoration:none; color:inherit;">
+                        <h3>@(i + 1)</h3>
+                        <p>@p.Nome @p.Cognome</p>
+                        <p>@p.Nazionalita</p>
+                        <small>@p.DataDiNascita.ToString()</small>
+                    </a>
+                    <br />
+                    
                 </div>
-                
-                <img src="~/css/Assets/@(p.Cognome).png" alt="@p.Nome" />
-            </a>
+
+                <img src="~/css/Assets/@(p.Cognome).png" alt="@p.Nome" type="button" onclick="caricaPilotaInForm('@p.IdPilota', '@p.Nome', '@p.Cognome', '@p.DataDiNascita', '@p.Nazionalita', '@p.Colore')" />
+
+            
+          
+			</div>
+
         }
     }
     else
     {
         <p>Nessun pilota nel database.</p>
     }
-    <br/>
+    <br />
+
     <details class="addPilota">
         <summary>Aggiungi pilota</summary>
         <form asp-action="AddPilota" method="post" class="add-pilota-form">
+            <div><label>Nome: <input name="Nome" required /></label></div>
+            <div><label>Cognome: <input name="Cognome" required /></label></div>
+            <div><label>Data di nascita: <input type="date" name="DataDiNascita" required /></label></div>
+            <div><label>Nazionalità: <input name="Nazionalita" /></label></div>
+            <div><label>Colore: <input name="Colore" /></label></div>
+            <div><button type="submit">Aggiungi Pilota</button></div>
+        </form>
+    </details>
+
+    <details class="addPilota">
+        <summary>Modifica Pilota Selezionato</summary>
+        <form asp-action="UpdatePilota" method="post">
+            <input type="hidden" name="IdPilota" id="edit-id" />
+
+            <div><label>Nome: <input name="Nome" id="edit-nome" required /></label></div>
+            <div><label>Cognome: <input name="Cognome" id="edit-cognome" required /></label></div>
+            <div><label>Data di nascita: <input name="DataDiNascita" id="edit-data" required /></label></div>
+            <div><label>Nazionalità: <input name="Nazionalita" id="edit-nazionalita" /></label></div>
+            <div><label>Colore: <input name="Colore" id="edit-colore" /></label></div>
             <div>
-                <label>Nome: <input name="Nome" /></label>
-            </div>
-            <div>
-                <label>Cognome: <input name="Cognome" /></label>
-            </div>
-            <div>
-                <label>Data di nascita: <input name="DataDiNascita" /></label>
-            </div>
-            <div>
-                <label>Nazionalità: <input name="Nazionalita" /></label>
-            </div>
-            <div>
-                <label>Colore (es: rosso, blu, azzurro, arancione, rosa, bianco): <input name="Colore" /></label>
-            </div>
-            <div>
-                <button type="submit">Aggiungi Pilota</button>
+                <button type="submit">Salva Modifiche</button>
             </div>
         </form>
     </details>
 </div>
 
+<script>
+    function caricaPilotaInForm(id, nome, cognome, data, nazionalita, colore) {
+        document.getElementById('edit-id').value = id;
+        document.getElementById('edit-nome').value = nome;
+        document.getElementById('edit-cognome').value = cognome;
+        document.getElementById('edit-data').value = data;
+        document.getElementById('edit-nazionalita').value = nazionalita;
+        document.getElementById('edit-colore').value = colore;
 
+        // Apre automaticamente il pannello di modifica
+        document.getElementById('details-modifica').open = true;
+        
+        // Fai uno scroll fluido fino al form di modifica per far capire all'utente che si è aperto
+        document.getElementById('details-modifica').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>

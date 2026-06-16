@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplicationF1.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/png" style="width: 64px;
+    height: 64px;" href="~/css/Assets/F1_logo.png">
+
 </head>
 <body>
     <header>
@@ -20,6 +23,12 @@
                 <a asp-controller="Home" asp-action="Piloti">Piloti</a>
                 <a asp-controller="Home" asp-action="Scuderie">Scuderie</a>
                 <a asp-controller="Home" asp-action="Campionati">Campionati</a>
+                
+                <select onchange="cambiaTema(this.value)" class="cambiaTema">
+                    <option value="">Scegli tema</option>
+                    <option value="chiaro">Chiaro</option>
+                    <option value="scuro">Scuro</option>
+                </select>
 
             </ul>
         </nav>
