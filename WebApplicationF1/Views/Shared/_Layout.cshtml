@@ -16,6 +16,7 @@
     <header>
         <nav class="">
             <ul class="navbar">
+                
                 <a asp-controller="Home" asp-action="Index">
                     <img src="~/css/Assets/F1_logo.png" class="imgF1">
                 </a>
@@ -34,11 +35,9 @@
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main class="container-fluid" style="padding: 0;">
+        @RenderBody()
+    </main>
 
     <footer class="site-footer">
         <a asp-controller="Home" asp-action="Sponsor" asp-route-name="aramco"><img src="~/css/Assets/aramco.png" alt="aramco" /></a>

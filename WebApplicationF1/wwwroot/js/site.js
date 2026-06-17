@@ -9,6 +9,11 @@ function cambiaTema(colore) {
         document.body.style.color = "white";
         document.querySelector(".navbar").style.backgroundColor = "rgb(58, 58, 58)";
         document.querySelector(".site-footer").style.backgroundColor = "rgb(58, 58, 58)";
+        document.querySelector(".box2").style.backgroundColor = "black";
+        document.querySelector(".boxContent>p").style.color = "white";
+        document.querySelector(".boxContent>boxClassifica").style.backgroundColor = "black";
+        document.querySelector(".boxContent>boxClassifica").style.color = "white";
+
     }
     else if (colore === 'chiaro') {
         document.body.style.backgroundColor = "white";
@@ -17,6 +22,10 @@ function cambiaTema(colore) {
             el.style.setProperty("color", "black")});
         document.querySelector(".navbar").style.backgroundColor = "#008080";
         document.querySelector(".site-footer").style.backgroundColor = "#008080";
+        document.querySelector(".box2").style.backgroundColor = "white";
+        document.querySelector(".boxContent>p").style.color = "black";
+        document.querySelector(".boxContent>boxClassifica").style.backgroundColor = "white";
+        document.querySelector(".boxContent>boxClassifica").style.color = "black";
     }
 }
 

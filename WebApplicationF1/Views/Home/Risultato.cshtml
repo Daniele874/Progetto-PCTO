@@ -37,12 +37,12 @@
                 var raceNormalized = new string(raceRaw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
                 <div class="boxRisultatoGara @(raceNormalized)" onclick="location.href='@Url.Action("RisultatoGara","Home", new { id = g.IdGara })'" style="cursor:pointer;">
                     <div class="boxContent">
-                        <h3><strong>@g.Nome</strong></h3>
-                        <p>Data: @g.DataGara</p>
-                        <p>Stato: @g.Stato</p>
-                        <p>Nazione: @g.Nazione</p>
-                        <p>Lunghezza tracciato (km): @(g.LunghezzaTracciato?.ToString() ?? "N/A")</p>
-                        <p>Numero giri: @(g.NumeroGiri?.ToString() ?? "N/A")</p>
+                        <h2><strong>@g.Nome</strong></h2>
+                        <h3>Data: @g.DataGara</h3>
+                        <h3>Stato: @g.Stato</h3>
+                        <h3>Nazione: @g.Nazione</h3>
+                        <h3>Lunghezza tracciato (km): @(g.LunghezzaTracciato?.ToString() ?? "N/A")</h3>
+                        <h3>Numero giri: @(g.NumeroGiri?.ToString() ?? "N/A")</h3>
                     </div>
                 </div>
                 <div class="gara-details" id="details-@(idx)">
@@ -53,10 +53,10 @@
                         var winnerNormalized = new string(winnerRaw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
                         <div class="boxDriver @(winnerNormalized)" id="pilot-@(winner.IdPilota)">
                             <div class="boxContent">
-                                <h3>1°</h3>
+                                <h1>1°</h1>
                                 <p>@winner.Nome @winner.Cognome</p>
                                 <p>@(winner.Nazionalita ?? "")</p>
-                                <small>@(winner.DataDiNascita ?? "")</small>
+                                <p>@(winner.DataDiNascita ?? "")</p>
                             </div>
                             <img src="~/css/Assets/@(winner.Cognome).png" alt="@winner.Nome" />
                         </div>

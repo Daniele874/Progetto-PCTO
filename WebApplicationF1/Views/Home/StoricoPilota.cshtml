@@ -19,9 +19,8 @@ else
         <a class="boxDriver @(pil.Colore ?? "bianco")" id="pilot-@pil.IdPilota">
             <div class="boxContent">
                 <p>@pil.Nome @pil.Cognome</p>
-                <br />
                 <p>@pil.Nazionalita</p>
-                <small>@pil.DataDiNascita</small>
+                <p>@pil.DataDiNascita</p>
             </div>
 
             <img src="~/css/Assets/@(pil.Cognome).png" alt="@pil.Nome" onerror="this.src='/css/Assets/placeholder.png';" />

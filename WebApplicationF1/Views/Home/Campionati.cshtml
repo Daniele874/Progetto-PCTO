@@ -22,9 +22,9 @@
                 <div class="boxDriver @(normalized)">
                     <a href="@Url.Action("Risultato", "Home", new { id = c.IdCampionato })" style="color:inherit; text-decoration:none; display:block;">
                         <div class="boxContent">
-                            <p>@c.Anno</p><br />
+                            <h3>@c.Anno</h3><br />
                             <h2>Campionato @c.Anno</h2>
-                            <p>Gare: @c.NumeroGare</p>
+                            <h3>Gare: @c.NumeroGare</h3>
                         </div>
                     </a>
                     <img src="@Url.Content("~/css/Assets/" + (c.Anno?.Replace(" ", "") ?? "default") + ".png")" alt="Alternate Text" />

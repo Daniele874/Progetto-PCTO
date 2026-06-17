@@ -28,12 +28,12 @@
             if (winner != null)
             {
                 <a asp-action="StoricoPilota" asp-route-id="@winner.IdPilota" class="boxDriver @(winnerColor)">
-                    <img src="~/css/Assets/@(winner.Cognome).png" alt="@winner.Nome" />
                     <div>
                         <h3>@winner.Nome @winner.Cognome</h3>
-                        <p>@(winner.Nazionalita ?? "")</p>
-                        <p>Data di nascita: @(winner.DataDiNascita ?? "")</p>
+                        <h3>@(winner.Nazionalita ?? "")</h3>
+                        <h3>Data di nascita: @(winner.DataDiNascita ?? "")</h3>
                     </div>
+                    <img src="~/css/Assets/@(winner.Cognome).png" alt="@winner.Nome" />
                 </a>
             }
 
