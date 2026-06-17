@@ -27,10 +27,11 @@
                         <tr><td>Valore sponsorizzazione</td><td>@(Model.Valore?.ToString() ?? "N/A")</td></tr>
                         <tr><td>Inizio sponsorizzazione</td><td>@(Model.DataInizioSponsorizzazione ?? "N/A")</td></tr>
                     </table>
+					<br />
+                    <p>@(Model.Storia?? "N/A")<p/>
                 </div>
             </div>
             <div class="boxRisultato" style="margin-top:30px; display:flex; justify-content: center">
-                <a href="@Url.Action("Index", "Home")" style="color:white; text-decoration:none;">&larr; Torna alla home</a>
             </div>
             
         }

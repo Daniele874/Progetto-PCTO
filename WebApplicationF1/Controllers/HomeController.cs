@@ -31,7 +31,7 @@ namespace WebApplicationF1.Controllers
         public async Task<IActionResult> Notizia(int id)
         {
             try
-            { 
+            {
                 var notizie = (await _repo.GetNotiziAsync()).OrderBy(n => n.IdNotizia).ToList();
                 var notizia = notizie.FirstOrDefault(n => n.IdNotizia == id);
                 if (notizia == null) return Content("Notizia non trovata.");
@@ -151,6 +151,8 @@ namespace WebApplicationF1.Controllers
                 {
                     IdScuderia = sc.IdScuderia,
                     NomeScuderia = sc.Nome,
+                    IdPilota1 = sc.IdPilota1 ?? 0,
+                    IdPilota2 = sc.IdPilota2 ?? 0,
                     Pilota1 = pilota1,
                     Pilota2 = pilota2,
                     GpFatti = storico?.GpFatti ?? 0,

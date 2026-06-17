@@ -27,14 +27,14 @@
             var winnerColor = new string(winnerColorRaw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
             if (winner != null)
             {
-                <div class="boxDriver @(winnerColor)" style="">
+                <a asp-action="StoricoPilota" asp-route-id="@winner.IdPilota" class="boxDriver @(winnerColor)">
                     <img src="~/css/Assets/@(winner.Cognome).png" alt="@winner.Nome" />
                     <div>
                         <h3>@winner.Nome @winner.Cognome</h3>
                         <p>@(winner.Nazionalita ?? "")</p>
                         <p>Data di nascita: @(winner.DataDiNascita ?? "")</p>
                     </div>
-                </div>
+                </a>
             }
 
             <h4 style="color:white; margin-top:12px;">Statistiche Gara</h4>
@@ -51,7 +51,7 @@
             </table>
 
             
-            <a href="@Url.Action("Risultato","Home", new { id = g.IdCampionato })">&larr; Torna ai risultati del campionato</a>
+            <a class="torna" href="@Url.Action("Risultato","Home", new { id = g.IdCampionato })">&larr; Torna ai risultati del campionato</a>
         }
     </div>
 </body>

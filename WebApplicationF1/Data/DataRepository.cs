@@ -108,7 +108,7 @@ namespace WebApplicationF1.Data
         {
             try
             {
-                var sql = @"SELECT idSponsor AS IdSponsor, nome AS Nome, valore AS Valore, dataInizioSponsorizzazione AS DataInizioSponsorizzazione FROM dbo.Sponsor WHERE LOWER(nome) = LOWER(@Name)";
+                var sql = @"SELECT idSponsor AS IdSponsor, nome AS Nome, valore AS Valore, dataInizioSponsorizzazione AS DataInizioSponsorizzazione, storia AS Storia FROM dbo.Sponsor WHERE LOWER(nome) = LOWER(@Name)";
                 var res = (await _db.QueryAsync<Sponsor>(sql, new { Name = name })).FirstOrDefault();
                 return res;
             }

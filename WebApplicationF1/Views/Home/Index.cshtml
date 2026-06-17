@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<WebApplicationF1.Models.Notizia>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -13,20 +15,26 @@
 </head>
 <body>
     
+   
     <div class="season">
         <p>ULTIME NOTIZIE</p>
     </div>
 
     <div class="box2">
-            @foreach (var n in Model)
-            {
-                <a asp-action="Notizia" asp-controller="Home" asp-route-id="@n.IdNotizia" class="boxNotizia">
-                    <img src="~/css/Assets/Notizie/@(n.IdNotizia).png" ) />
-                    <p class="notizia-data">@n.DataDiPubblicazione</p>
-                    <h3>@n.Titolo</h3>
-                </a>
-            }
+        @{
+            var notizie = Model.OrderByDescending(n => n.IdNotizia);
+        }
+
+        @foreach (var n in notizie)
+        {
+            <a asp-action="Notizia" asp-controller="Home" asp-route-id="@n.IdNotizia" class="boxNotizia">
+                <img src="~/css/Assets/Notizie/@(n.IdNotizia).png" />
+                <p class="notizia-data">@n.DataDiPubblicazione.ToString()</p>
+                <h3>@n.Titolo</h3>
+            </a>
+        }
     </div>
+
 
     <br /><br /><br /><br />
 

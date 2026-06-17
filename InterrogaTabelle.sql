@@ -1,6 +1,6 @@
 /*INTERROGAZIONE TABELLA*/
 
-select Pilota.nome, Pilota.cognome from Pilota inner join Scuderia on Pilota.idPilota = Scuderia.idPilota
+select Pilota.nome, Pilota.cognome from Pilota inner join Scuderia on Pilota.idPilota = Scuderia.idPilota1 
 where Scuderia.nome in ('Ferrari')
 
 select Pilota.nome, Pilota.cognome, count(*) as Vittorie_Totali 
@@ -13,6 +13,6 @@ where Campionato.anno like '%2026%' and dataGara like '%2026%'
 
 
 
-select *  from [dbo].[StoricoPilota]
+select * From StoricoScuderia inner join Scuderia on StoricoScuderia.idScuderia = Scuderia.idScuderia 
 
-select * from Notizie
+select * from Notizie order by idNotizia s

@@ -19,3 +19,12 @@ function cambiaTema(colore) {
         document.querySelector(".site-footer").style.backgroundColor = "#008080";
     }
 }
+
+function sponsors(event) {
+    event.preventDefault();
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
+}

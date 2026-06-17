@@ -32,26 +32,27 @@
             {
                 var p1Raw = (Model.Pilota1.Colore ?? teamCls ?? "").Trim();
                 var p1Cls = new string(p1Raw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
+                <a asp-action="StoricoPilota" asp-route-id="@Model.IdPilota1" class="boxDriver @(p1Cls)" id="pilot-@Model.Pilota1.IdPilota">
                 
-                <div class="boxDriver @(p1Cls)" id="pilot-@Model.Pilota1.IdPilota">
                     <div class="boxContent">
-                        <h3>@(($"{Model.Pilota1.Nome} {Model.Pilota1.Cognome}").Trim())</h3>
+                            <h3>@(($"{Model.Pilota1.Nome} {Model.Pilota1.Cognome}").Trim())</h3>
                     </div>
                     <img src="~/css/Assets/@(Model.Pilota1.Cognome).png" alt="@(Model.Pilota1.Nome)" />
-                </div>
+                </a>
             }
 
             @if (Model.Pilota2 != null)
             {
                 var p2Raw = (Model.Pilota2.Colore ?? teamCls ?? "").Trim();
                 var p2Cls = new string(p2Raw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
+                <a asp-action="StoricoPilota" asp-route-id="@Model.IdPilota2" class="boxDriver @(p2Cls)" id="pilot-@Model.Pilota2.IdPilota">
                 
-                <div class="boxDriver @(p2Cls)" id="pilot-@Model.Pilota2.IdPilota">
                     <div class="boxContent">
                         <h3>@(($"{Model.Pilota2.Nome} {Model.Pilota2.Cognome}").Trim())</h3>
                     </div>
                     <img src="~/css/Assets/@(Model.Pilota2.Cognome).png" alt="@(Model.Pilota2.Nome)" />
-                </div>
+                </a>
+
             }
         }
         
@@ -81,6 +82,8 @@
                     <td><strong>@Model.CampioniDelMondo</strong></td>
                 </tr>
             </table>
+        <br />
+        <a class="torna" asp-action="Scuderie" asp-controller="Home">← Torna alle scuderie</a>
     </div>
 </body>
 </html>
