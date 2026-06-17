@@ -11,8 +11,8 @@ function cambiaTema(colore) {
         document.querySelector(".site-footer").style.backgroundColor = "rgb(58, 58, 58)";
         document.querySelector(".box2").style.backgroundColor = "black";
         document.querySelector(".boxContent>p").style.color = "white";
-        document.querySelector(".boxContent>boxClassifica").style.backgroundColor = "black";
-        document.querySelector(".boxContent>boxClassifica").style.color = "white";
+        document.querySelector(".boxClassifica").style.backgroundColor = "black";
+        document.querySelector(".boxClassifica").style.color = "white";
 
     }
     else if (colore === 'chiaro') {
@@ -24,8 +24,8 @@ function cambiaTema(colore) {
         document.querySelector(".site-footer").style.backgroundColor = "#008080";
         document.querySelector(".box2").style.backgroundColor = "white";
         document.querySelector(".boxContent>p").style.color = "black";
-        document.querySelector(".boxContent>boxClassifica").style.backgroundColor = "white";
-        document.querySelector(".boxContent>boxClassifica").style.color = "black";
+        document.querySelector(".boxClassifica").style.backgroundColor = "white";
+        document.querySelector(".boxClassifica").style.color = "black";
     }
 }
 

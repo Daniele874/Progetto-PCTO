@@ -26,9 +26,13 @@ body {
     margin-inline: 4%;
     padding: 10px;
     font-weight: bolder;
-    transition: transform 0.3s ease;
     border: solid 1px transparent;
     text-decoration: none;
+    background-image: linear-gradient(red, red);
+    background-size: 0% 5px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 0.3s ease;
 }
 
 .navbar > select {
@@ -38,10 +42,14 @@ body {
     margin-inline: 4%;
     padding: 10px;
     font-weight: bolder;
-    transition: transform 0.3s ease;
     border: solid 1px transparent;
     text-decoration: none;
     background-color: transparent;
+    background-image: linear-gradient(red, red);
+    background-size: 0% 5px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 0.3s ease;
 }
 
 .navbar > select > option{
@@ -55,19 +63,11 @@ body {
 }
 
 .navbar > a:hover {
-    transform: scale(1.15);
-    box-shadow: 2px 2px 4px white;
-    border-radius: 10px;
-    border-color: white;
-    border: solid 1px;
+    background-size: 100% 5px;
 }
 
 .navbar > select:hover {
-    transform: scale(1.15);
-    box-shadow: 2px 2px 4px white;
-    border-radius: 10px;
-    border-color: white;
-    border: solid 1px;
+    background-size: 100% 5px;
 }
 
 .imgF1 {
@@ -100,7 +100,7 @@ body {
     flex: 1 1 200px;
 }
 
-.torna{
+.torna {
     color: white;
     font-family: sans-serif;
     font-size: 25px;
@@ -110,15 +110,15 @@ body {
     border: solid 1px transparent;
     text-decoration: none;
     border: solid 1px transparent;
-    transition: transform 0.4s ease;
+    background-image: linear-gradient(red, red);
+    background-size: 0% 5px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 0.6s ease;
 }
 
 .torna:hover {
-    transform: scale(1.10);
-    box-shadow: 2px 2px 4px white;
-    border-radius: 10px;
-    border-color: white;
-    border: solid 1px;
+    background-size: 100% 5px;
 }
 
 .boxDriver {
@@ -180,6 +180,8 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    padding-bottom: 3%;
+    padding-top: 3%;
 }
 
 .box2 > img {
@@ -200,8 +202,8 @@ body {
     width: 100%;
     height: auto;
     padding: 20px;
-    margin-top: 1%;
-    margin-bottom: 1%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
     background-color: rgb(58, 58, 58);
     border-radius: 5px;
     text-decoration: none;
@@ -217,9 +219,8 @@ body {
 }
 
 .boxNotizia:hover {
-    box-shadow: 2px 2px 4px white;
-    border-color: white;
-    border: solid 1px;
+    box-shadow: 2px 2px 4px red;
+    border: solid 1px red;
     transform: scale(1.05);
 }
 
@@ -479,8 +480,8 @@ body {
     border: solid 1px white;
     border-radius: 10px;
     background-color: rgb(58, 58, 58);
-    width: 370px;
-    height: auto;
+    width: 28%;
+    height: 400px;
     display: flex;
     justify-content: center;
     padding: 20px;
