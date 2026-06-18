@@ -15,4 +15,3 @@ where Campionato.anno like '%2026%' and dataGara like '%2026%'
 
 select * From StoricoScuderia inner join Scuderia on StoricoScuderia.idScuderia = Scuderia.idScuderia 
 
-select * from Notizie order by idNotizia s

@@ -70,6 +70,14 @@ body {
     background-size: 100% 5px;
 }
 
+.navbar a.active {
+    background-image: linear-gradient(red, red);
+    background-size: 100% 5px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+
 .imgF1 {
     width: 130px;
     height: 70%;
@@ -104,7 +112,7 @@ body {
     color: white;
     font-family: sans-serif;
     font-size: 25px;
-    margin: 2%;
+    margin: 3%;
     padding: 10px;
     font-weight: bolder;
     border: solid 1px transparent;
@@ -129,7 +137,7 @@ body {
     color: #fff;
     border-radius: 10px;
     width: 28%;
-    height: 400px;
+    height: 450px;
     margin: 2%;
     font-family: sans-serif;
     font-weight: bolder;
@@ -184,7 +192,36 @@ body {
     padding-top: 3%;
 }
 
+.notizieBox {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px;
+    background-color: black;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start; 
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+.notizieBox::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 5px;
+}
+
+.notizieBox::-webkit-scrollbar {
+    height: 10px; 
+}
+
 .box2 > img {
+    width: 800px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.notizieBox > img {
     width: 800px;
     height: auto;
     border-radius: 8px;
@@ -199,11 +236,11 @@ body {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    width: 100%;
-    height: auto;
+    min-width: 300px; 
+    flex-shrink: 0; 
+    height: 250px;
     padding: 20px;
-    margin-top: 1.5%;
-    margin-bottom: 1.5%;
+    margin: 1.5%;
     background-color: rgb(58, 58, 58);
     border-radius: 5px;
     text-decoration: none;
@@ -212,7 +249,7 @@ body {
 }
 
 .boxNotizia > img {
-    width: 300px;
+    width: 30%;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
@@ -523,32 +560,7 @@ body {
     text-decoration: none;
 }
 
-.boxRisultatoGara {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    padding: 12px;
-    color: #fff;
-    border-radius: 10px;
-    width: 35%;
-    height: 450px;
-    margin: 2%;
-    font-family: sans-serif;
-    font-weight: bolder;
-    border: solid 1px transparent;
-    font-size: 30px;
-    transition: transform 0.4s ease;
-    text-shadow: 2px 2px 4px black;
-}
 
-.boxRisultatoGara:hover {
-    box-shadow: 2px 2px 4px white;
-    border-color: white;
-    border: solid 1px;
-    text-decoration: none;
-    transform: scale(1.05);
-}
 
 .boxGara {
     display: flex;

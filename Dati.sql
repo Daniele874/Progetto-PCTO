@@ -414,3 +414,5 @@ values
 
 /*CANCELLAZIONE TABELLA*/
 --drop table GaraPiloti, CampionatoGare, Gara, StoricoPilota, StoricoScuderia, Scuderia, Pilota, Campionato, Sponsor, Notizie
+
+

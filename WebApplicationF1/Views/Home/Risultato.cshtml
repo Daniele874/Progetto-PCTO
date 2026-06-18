@@ -19,9 +19,7 @@
     </script>
 </head>
 <body>
-    <div class="season">
-        <p>RISULTATI</p>
-    </div>
+    <a class="torna" href="javascript:history.back()">← Torna alla pagina precedente</a>
     <div class="box">
         @if (Model == null || !Model.Any())
         {
@@ -35,7 +33,7 @@
                 var g = item.Gara;
                 var raceRaw = (g?.Colore ?? item.CampionatoColore ?? "").Trim();
                 var raceNormalized = new string(raceRaw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
-                <div class="boxRisultatoGara @(raceNormalized)" onclick="location.href='@Url.Action("RisultatoGara","Home", new { id = g.IdGara })'" style="cursor:pointer;">
+                <div class="boxDriver @g.Colore @(raceNormalized)" onclick="location.href='@Url.Action("RisultatoGara", "Home", new { id = g.IdGara })'" style="cursor:pointer;">
                     <div class="boxContent">
                         <h2><strong>@g.Nome</strong></h2>
                         <h3>Data: @g.DataGara</h3>
@@ -44,6 +42,8 @@
                         <h3>Lunghezza tracciato (km): @(g.LunghezzaTracciato?.ToString() ?? "N/A")</h3>
                         <h3>Numero giri: @(g.NumeroGiri?.ToString() ?? "N/A")</h3>
                     </div>
+                    <img  src="~/css/Assets/@(g.WinnerCognome).png" alt="Alternate Text" />
+
                 </div>
                 <div class="gara-details" id="details-@(idx)">
                     @if (item.Risultati != null && item.Risultati.Any())
@@ -80,7 +80,9 @@
                 </div>
                 idx++;
             }
-        }
-    </div>
+		}
+	</div>
+	<a class="torna" asp-action="Index" asp-controller="Home">← Torna alla home</a>
+    
 </body>
 </html>

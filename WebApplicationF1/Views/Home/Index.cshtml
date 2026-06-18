@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<WebApplicationF1.Models.Notizia>
-
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -16,20 +15,21 @@
 <body>
     
    
-    <div class="season">
-        <p>ULTIME NOTIZIE</p>
-    </div>
+    
 
-    <div class="box2">
+    <div class="notizieBox">
+        <div class="season">
+            <p>ULTIME NOTIZIE</p>
+        </div>
         @{
             var notizie = Model.OrderByDescending(n => n.IdNotizia);
         }
 
-        @foreach (var n in notizie)
+        @foreach(var n in notizie)
         {
             <a asp-action="Notizia" asp-controller="Home" asp-route-id="@n.IdNotizia" class="boxNotizia">
                 <img src="~/css/Assets/Notizie/@(n.IdNotizia).png" />
-                <p class="notizia-data">@n.DataDiPubblicazione.ToString()</p>
+                <p style="margin-left:20px; margin-right:20px">@n.DataDiPubblicazione.ToString()</p>
                 <h3>@n.Titolo</h3>
             </a>
         }
@@ -42,32 +42,35 @@
         <p>STAGIONE 2026</p>
     </div>
     <div class="box">
-        <div class="boxDriver rosso">
+        <a asp-action="StoricoPilota" asp-route-id="2" class="boxDriver rosso">
             <div class="boxContent">
                 <h1>2nd</h1>
                 <h3>Lewis Hamilton</h3> <br>
-                <h3>Ferrari</h3>
+                <h3>Ferrari</h3> <br>
+                <h3>115 Punti</h3>
             </div>
             <img src="~/css/Assets/hamilton.png">
-        </div>
+        </a>
 
-        <div class="boxDriver azzurro">
+        <a asp-action="StoricoPilota" asp-route-id="8" class="boxDriver azzurro">
             <div class="boxContent">
                 <h1>1st</h1>
                 <h3>Kimi Antonelli</h3> <br>
-                <h3>Mercedes</h3>
+                <h3>Mercedes</h3> <br>
+				<h3>156 Punti</h3>
             </div>
             <img src="~/css/Assets/antonelli.png">
-        </div>
+        </a>
 
-        <div class="boxDriver azzurro">
+        <a asp-action="StoricoPilota" asp-route-id="7" class="boxDriver azzurro">
             <div class="boxContent">
                 <h1>3rd</h1>
                 <h3>George Russel</h3> <br>
-                <h3>Mercedes</h3>
+                <h3>Mercedes</h3> <br>
+                <h3>106 Punti</h3>
             </div>
             <img src="~/css/Assets/russell.png">
-        </div>
+        </a>
             <table class="boxClassifica">
                 <tr>
                     <td>POS.</td>

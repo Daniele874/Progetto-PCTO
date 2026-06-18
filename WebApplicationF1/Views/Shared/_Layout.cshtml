@@ -21,10 +21,10 @@
                     <img src="~/css/Assets/F1_logo.png" class="imgF1">
                 </a>
 
-                <a asp-controller="Home" asp-action="Piloti">Piloti</a>
-                <a asp-controller="Home" asp-action="Scuderie">Scuderie</a>
-                <a asp-controller="Home" asp-action="Campionati">Campionati</a>
-                <a asp-controller="Home" asp-action="" onclick="sponsors(event)">Sponsor</a>
+                <a asp-controller="Home" asp-action="Piloti" class="@(ViewContext.RouteData.Values["action"].ToString() == "Piloti" || ViewContext.RouteData.Values["action"].ToString() == "StoricoPilota" ? "active" : "")">Piloti</a>
+                <a asp-controller="Home" asp-action="Scuderie" class="@(ViewContext.RouteData.Values["action"].ToString() == "Scuderie" || ViewContext.RouteData.Values["action"].ToString() == "ScuderiaDetails" ? "active" : "")">Scuderie</a>
+                <a asp-controller="Home" asp-action="Campionati" class="@(ViewContext.RouteData.Values["action"].ToString() == "Campionati" || ViewContext.RouteData.Values["action"].ToString() == "Risultato" || ViewContext.RouteData.Values["action"].ToString() == "RisultatoGara" ? "active" : "")">Campionati</a>
+                <a asp-controller="Home" asp-action="" class="@(ViewContext.RouteData.Values["action"].ToString() == "Sponsor" ? "active" : "")" onclick="sponsors(event)">Sponsor</a>
                 
                 <select onchange="cambiaTema(this.value)" class="cambiaTema">
                     <option value="">Scegli tema</option>

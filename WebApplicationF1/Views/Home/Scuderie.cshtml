@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-
-    <div class="season">2026 LINE-UP</div>
-
+    <a class="torna" href="javascript:history.back()">← Torna alla pagina precedente</a>
     <div class="box">
         @foreach (var s in Model)
         {
@@ -24,6 +22,9 @@
                 <img src="@Url.Content("~/css/Assets/" + (s.Nome?.Replace(" ", "") ?? "default") + ".png")" alt="@s.Nome" />
             </div>
         }
+
     </div>
+    <a class="torna" asp-action="Index" asp-controller="Home">← Torna alla home</a>
+
 </body>
 </html>

@@ -2,13 +2,13 @@
 @{
     ViewData["Title"] = "Piloti";
 }
+<a class="torna" style="margin: 3%" href="javascript:history.back()">← Torna alla pagina precedente</a>
 
-<div class="season">ELENCO PILOTI</div>
-<hr />
 <div class="box db-piloti">
 
     @{
-        var pilotList = (Model ?? Enumerable.Empty<WebApplicationF1.Models.Pilota>()).ToList();
+        var pilotList = (Model ?? Enumerable.Empty<WebApplicationF1.Models.Pilota>()).OrderBy(p => p.Cognome).ThenBy(p => p.Nome).ToList();
+        
     }
 
     @if (pilotList.Any())
@@ -20,7 +20,6 @@
 
                 <div class="boxContent">
                     <a asp-action="StoricoPilota" asp-route-id="@p.IdPilota" style="text-decoration:none; color:inherit;">
-                        <h3>@(i + 1)</h3>
                         <p>@p.Nome @p.Cognome</p>
                         <p>@p.Nazionalita</p>
                         <p>@p.DataDiNascita.ToString()</p>
@@ -70,6 +69,9 @@
             </div>
         </form>
     </details>
+
+    <a class="torna" asp-action="Index" asp-controller="Home">← Torna alla home</a>
+
 </div>
 
 <script>

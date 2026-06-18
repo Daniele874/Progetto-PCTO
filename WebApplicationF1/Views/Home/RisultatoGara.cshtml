@@ -13,6 +13,8 @@
 </head>
 <body>
     <div class="season"><p>RISULTATO GARA</p></div>
+    <a class="torna" href="javascript:history.back()">← Torna alla pagina precedente</a>
+    
     <div class="boxGara">
         @if (Model == null || Model.Gara == null)
         {
@@ -51,7 +53,8 @@
             </table>
 
             
-            <a class="torna" href="@Url.Action("Risultato", "Home", new { id = g.IdCampionato })">&larr; Torna ai risultati del campionato</a>
+			<a class="torna" href="@Url.Action("Risultato", "Home", new { id = g.IdCampionato })">&larr; Torna ai risultati del campionato</a>
+            <a class="torna" asp-action="Index" asp-controller="Home">← Torna alla home</a>
         }
     </div>
 </body>

@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <div class="season"><p>SPONSOR</p></div>
+
+    <a class="torna" href="javascript:history.back()">← Torna alla pagina precedente</a>
     <div class="boxGara">
+        
         @if (Model == null)
         {
             <p style="color:white;">Sponsor non trovato.</p>
@@ -35,5 +37,7 @@
             
         }
     </div>
+    <a class="torna" asp-action="Index" asp-controller="Home">← Torna alla home</a>
+
 </body>
 </html>

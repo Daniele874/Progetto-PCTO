@@ -15,10 +15,13 @@
     </style>
 </head>
 <body>
+
     <div class="season">
         <p>@Model.NomeScuderia</p>
     </div>
-    
+
+	<a class="torna" href="javascript:history.back()">← Torna alla pagina precedente</a>
+
     <div class="box">
         @if (Model == null)
         {
@@ -84,6 +87,7 @@
             </table>
         <br />
         <a class="torna" asp-action="Scuderie" asp-controller="Home">← Torna alle scuderie</a>
+        <a class="torna" asp-action="Index" asp-controller="Home">← Torna alla home</a>
     </div>
 </body>
 </html>

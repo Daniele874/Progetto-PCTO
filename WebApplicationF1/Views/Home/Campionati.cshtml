@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="~/css/site.css">
 </head>
 <body>
+    <a class="torna" href="javascript:history.back()">← Torna alla pagina precedente</a>
+    
     <div class="box">
         @if (Model == null || !Model.Any())
         {
@@ -31,7 +33,9 @@
 
                 </div>
             }
-        }
-    </div>
+		}
+	</div>
+	<a class="torna" asp-action="Index" asp-controller="Home">← Torna alla home</a>
+    
 </body>
 </html>
