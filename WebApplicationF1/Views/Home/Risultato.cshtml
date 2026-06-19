@@ -33,6 +33,7 @@
                 var g = item.Gara;
                 var raceRaw = (g?.Colore ?? item.CampionatoColore ?? "").Trim();
                 var raceNormalized = new string(raceRaw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
+                if(g.Stato == "gia svolta"){
                 <div class="boxDriver @g.Colore @(raceNormalized)" onclick="location.href='@Url.Action("RisultatoGara", "Home", new { id = g.IdGara })'" style="cursor:pointer;">
                     <div class="boxContent">
                         <h2><strong>@g.Nome</strong></h2>
@@ -45,6 +46,23 @@
                     <img  src="~/css/Assets/@(g.WinnerCognome).png" alt="Alternate Text" />
 
                 </div>
+                }
+                 else
+                        {
+                        <div class="boxDriver @g.Colore @(raceNormalized)" onclick="location.href='@Url.Action("RisultatoGara", "Home", new { id = g.IdGara })'" style="cursor:pointer;">
+                            <div class="boxContent">
+                                <h2><strong>@g.Nome</strong></h2>
+                                <h3>Data: @g.DataGara</h3>
+                                <h3>Stato: @g.Stato</h3>
+                                <h3>Nazione: @g.Nazione</h3>
+                                <h3>Lunghezza tracciato (km): @(g.LunghezzaTracciato?.ToString() ?? "N/A")</h3>
+                                <h3>Numero giri: @(g.NumeroGiri?.ToString() ?? "N/A")</h3>
+                            </div>
+                            <img src="~/css/Assets/2026.png" alt="Alternate Text" />
+
+                        </div>
+                        }
+                    
                 <div class="gara-details" id="details-@(idx)">
                     @if (item.Risultati != null && item.Risultati.Any())
                     {

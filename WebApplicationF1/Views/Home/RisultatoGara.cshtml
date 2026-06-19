@@ -27,7 +27,7 @@
             var winner = Model.Risultati?.FirstOrDefault(r => r.Piazzamento == 1);
             var winnerColorRaw = (winner?.Colore ?? Model.CampionatoColore ?? "").Trim();
             var winnerColor = new string(winnerColorRaw.Where(char.IsLetterOrDigit).ToArray()).ToLowerInvariant();
-            if (winner != null)
+            if (winner != null && g.Stato == "gia svolta")
             {
                 <a asp-action="StoricoPilota" asp-route-id="@winner.IdPilota" class="boxDriver @(winnerColor)">
                     <div>
@@ -39,18 +39,34 @@
                 </a>
             }
 
-            <h4 style="color:white; margin-top:12px;">Statistiche Gara</h4>
-            <table class="boxClassifica">
-                <tr><td>Pos.</td><td>Pilota</td><td>Giro più veloce (in minuti)</td></tr>
-                @foreach(var r in (Model.Risultati ?? Enumerable.Empty<WebApplicationF1.Models.GaraRisultato>()).OrderBy(r=>r.Piazzamento))
+                else
                 {
-                    <tr>
-                        <td>@r.Piazzamento</td>
-                        <td>@r.Nome @r.Cognome</td>
-                        <td>@(r.GiroPiuVeloce?.ToString() ?? "N/A")</td>
-                    </tr>
+                    <div class="boxDriver @(g.Colore)">
+                        <h3>Gara ancora da svolgere</h3>
+                        <img src="~/css/Assets/2026.png" alt="@winner.Nome" />
+
+                    </div>
                 }
-            </table>
+
+                if (g.Stato == "gia svolta") {
+                    <h4 style="color:white; margin-top:12px;">Statistiche Gara</h4>  
+                    <table class="boxClassifica">
+                        <tr><td>Pos.</td><td>Pilota</td><td>Giro più veloce (in minuti)</td></tr>
+                        @foreach (var r in (Model.Risultati ?? Enumerable.Empty<WebApplicationF1.Models.GaraRisultato>()).OrderBy(r => r.Piazzamento))
+                        {
+                            <tr>
+                                <td>@r.Piazzamento</td>
+                                <td>@r.Nome @r.Cognome</td>
+                                <td>@(r.GiroPiuVeloce?.ToString() ?? "N/A")</td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <h4 style="color:white; margin-top:12px;">Statistiche Gara (non disponibili)</h4>
+			    }
+                
 
             
 			<a class="torna" href="@Url.Action("Risultato", "Home", new { id = g.IdCampionato })">&larr; Torna ai risultati del campionato</a>
